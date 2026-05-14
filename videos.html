@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>影音 · 静界</title>
+  <meta name="description" content="静界影音 — 佛学智慧与现代生活的交融视频分享。">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☽</text></svg>">
+</head>
+<body>
+
+  <div class="background-canvas">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <span class="logo-icon">☽</span>
+        <span class="gold-text">静界</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="videos.html" class="active">影音</a></li>
+        <li><a href="experience.html">心语</a></li>
+        <li><a href="about.html">关于</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <div class="hero-badge" style="display:inline-block;margin-bottom:1rem;">✦ 影音</div>
+      <h1 class="section-title">
+        <span class="chinese-title gold-text">以影传心</span>
+      </h1>
+      <p class="section-subtitle" style="margin:1rem auto 0;">
+        每一帧都是心的映照。精选佛学智慧视频，用影像传递觉知与宁静。
+      </p>
+    </div>
+  </section>
+
+  <!-- Video Listings -->
+  <section style="padding-top:0;">
+    <div class="container">
+      <!-- Category filter -->
+      <div class="glass-strong" style="display:inline-flex;gap:0.25rem;padding:0.3rem;border-radius:100px;margin-bottom:var(--space-lg);">
+        <button class="btn btn-sm btn-primary" data-filter="all" style="border-radius:100px;">全部</button>
+        <button class="btn btn-sm btn-glass" data-filter="meditation" style="border-radius:100px;">禅修</button>
+        <button class="btn btn-sm btn-glass" data-filter="wisdom" style="border-radius:100px;">智慧</button>
+        <button class="btn btn-sm btn-glass" data-filter="life" style="border-radius:100px;">生活</button>
+      </div>
+
+      <div class="video-grid" id="videoGrid">
+        <!-- Videos will be dynamically populated by JS or use static placeholders -->
+      </div>
+
+      <div class="empty-state glass" style="border-radius:var(--radius-lg);">
+        <div class="empty-icon">🎬</div>
+        <h3>视频正在加载中...</h3>
+        <p>你的视频正在剪辑中，完成后将第一时间发布在这里。<br>敬请期待！</p>
+        <br>
+        <a href="index.html" class="btn btn-glass">返回首页</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand"><span class="gold-text">静界</span> · Realm of Stillness</div>
+          <div class="footer-text" style="margin-top:0.3rem;">年轻修行人的精神角落</div>
+        </div>
+        <div class="footer-links">
+          <a href="about.html">关于</a>
+          <a href="https://github.com/tancong/jingjie" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
