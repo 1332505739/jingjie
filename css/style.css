@@ -76,6 +76,47 @@ body {
 
   /* Container */
   --container-max: 1200px;
+
+  /* Nav */
+  --nav-bg: rgba(7, 7, 15, 0.7);
+  --nav-menu-bg: rgba(7, 7, 15, 0.95);
+}
+
+/* ----- Light Theme ----- */
+[data-theme="light"] {
+  /* Background */
+  --bg-deep: #f3efe6;
+  --bg-dark: #faf7f1;
+  --bg-mid: #fffef9;
+  --bg-surface: #ede8da;
+
+  /* Glass */
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-bg-hover: rgba(255, 255, 255, 0.78);
+  --glass-bg-strong: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(0, 0, 0, 0.06);
+  --glass-border-hover: rgba(0, 0, 0, 0.12);
+  --glass-shadow: 0 8px 40px rgba(0, 0, 0, 0.06);
+
+  /* Accent — same gold, slightly warmer */
+  --accent: #b8954a;
+  --accent-light: #d4bd82;
+  --accent-dim: #927535;
+  --accent-glow: rgba(184, 149, 74, 0.12);
+
+  /* Text */
+  --text-primary: #2c2416;
+  --text-secondary: rgba(44, 36, 22, 0.55);
+  --text-tertiary: rgba(44, 36, 22, 0.3);
+
+  /* Nav */
+  --nav-bg: rgba(243, 239, 230, 0.75);
+  --nav-menu-bg: rgba(243, 239, 230, 0.95);
+}
+
+/* Smooth theme transition */
+body, .glass, .glass-strong, .navbar, .btn, .footer {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
 }
 
 /* ----- Background Canvas (animated) ----- */
@@ -252,7 +293,7 @@ section {
 }
 
 .navbar.scrolled {
-  background: rgba(7, 7, 15, 0.7);
+  background: var(--nav-bg);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -335,6 +376,36 @@ section {
   background: var(--text-primary);
   border-radius: 2px;
   transition: all var(--transition-fast);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all var(--transition-default);
+  margin-right: 0.25rem;
+}
+
+.theme-toggle:hover {
+  background: var(--glass-bg-hover);
+  border-color: var(--accent);
+  transform: scale(1.05);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+[data-theme="light"] .theme-toggle {
+  color: var(--accent-dim);
 }
 
 /* ----- Hero ----- */
@@ -795,7 +866,7 @@ section {
     left: 0;
     width: 100%;
     height: 100vh;
-    background: rgba(7, 7, 15, 0.95);
+    background: var(--nav-menu-bg);
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     flex-direction: column;

@@ -6,6 +6,36 @@
 document.addEventListener('DOMContentLoaded', () => {
 
   // ==========================================
+  // 0. Theme toggle
+  // ==========================================
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+
+  // Load saved theme
+  const saved = localStorage.getItem('jingjie-theme');
+  if (saved === 'light') {
+    html.setAttribute('data-theme', 'light');
+    if (themeToggle) themeToggle.textContent = '☽';
+  }
+
+  // Toggle on click
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      if (next === 'light') {
+        html.setAttribute('data-theme', 'light');
+        themeToggle.textContent = '☽';
+        localStorage.setItem('jingjie-theme', 'light');
+      } else {
+        html.removeAttribute('data-theme');
+        themeToggle.textContent = '☀';
+        localStorage.setItem('jingjie-theme', 'dark');
+      }
+    });
+  }
+
+  // ==========================================
   // 1. Navbar scroll effect
   // ==========================================
   const navbar = document.getElementById('navbar');
