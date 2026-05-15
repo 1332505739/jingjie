@@ -1349,6 +1349,111 @@ section {
   border-radius: 0 2px 2px 0;
 }
 
+/* ----- Paragraph blocks with insight ----- */
+.para-block {
+  position: relative;
+  padding: var(--space-xs) var(--space-sm);
+  margin: 0 calc(-1 * var(--space-sm));
+  border-radius: var(--radius-sm);
+  transition: background 0.25s ease;
+  cursor: default;
+}
+
+.para-block.has-insight {
+  cursor: pointer;
+}
+
+.para-block.has-insight:hover {
+  background: var(--glass-bg);
+}
+
+.para-block p {
+  margin-bottom: 0;
+}
+
+.para-dot {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  font-size: 0.65rem;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: auto;
+}
+
+.para-block.has-insight:hover .para-dot {
+  opacity: 1;
+}
+
+.para-block.has-insight::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--accent);
+  border-radius: 3px 0 0 3px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.para-block.has-insight:hover::before {
+  opacity: 0.5;
+}
+
+/* Insight tooltip */
+.insight-tooltip {
+  position: fixed;
+  z-index: 3000;
+  max-width: 380px;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-surface);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4), 0 0 24px var(--accent-glow);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+  pointer-events: none;
+}
+
+.insight-tooltip.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.insight-content {
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+.insight-content::before {
+  content: '💡 ';
+  font-size: 0.7rem;
+}
+
+[data-theme="light"] .insight-tooltip {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12), 0 0 24px var(--accent-glow);
+}
+
+@media (max-width: 768px) {
+  .insight-tooltip {
+    max-width: calc(100vw - 32px);
+  }
+
+  .para-dot {
+    opacity: 0.5;
+    font-size: 0.75rem;
+  }
+}
+
 /* ----- Responsive reads ----- */
 @media (max-width: 768px) {
   .riqian-grid {
