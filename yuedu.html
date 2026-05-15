@@ -3,23 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日签 · 静界</title>
-  <meta name="description" content="静界日签 — 每日一禅，一句话照见内心。">
+  <title>阅读室 · 静界</title>
+  <meta name="description" content="静界阅读室 — 佛、道、儒三家经典，沉浸式阅读体验。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap">
-  <!-- Open Graph -->
-  <meta property="og:title" content="每日一禅 · 静界日签">
-  <meta property="og:description" content="今日一句，照见内心。三十日一轮，日日新生。">
-  <meta property="og:url" content="https://1332505739.github.io/jingjie/riqian">
+  <meta property="og:title" content="三家经典 · 静界阅读室">
+  <meta property="og:description" content="佛、道、儒三家经典，沉浸式阅读。">
+  <meta property="og:url" content="https://1332505739.github.io/jingjie/yuedu">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="静界">
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="每日一禅 · 静界日签">
-  <meta name="twitter:description" content="今日一句，照见内心。">
-  <!-- Canonical -->
-  <link rel="canonical" href="https://1332505739.github.io/jingjie/riqian">
+  <meta name="twitter:title" content="三家经典 · 静界阅读室">
+  <meta name="twitter:description" content="佛、道、儒三家经典，沉浸式阅读。">
+  <link rel="canonical" href="https://1332505739.github.io/jingjie/yuedu">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☽</text></svg>">
 </head>
@@ -44,8 +41,8 @@
       </button>
       <ul class="navbar-links" id="navLinks">
         <li><a href="index.html">首页</a></li>
-        <li><a href="yuedu.html">阅读室</a></li>
-        <li><a href="riqian.html" class="active">日签</a></li>
+        <li><a href="yuedu.html" class="active">阅读室</a></li>
+        <li><a href="riqian.html">日签</a></li>
         <li><a href="videos.html">影音</a></li>
         <li><a href="rumen.html">入门</a></li>
         <li><a href="experience.html">心语</a></li>
@@ -56,41 +53,49 @@
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">
-      <div class="hero-badge" style="display:inline-block;margin-bottom:1rem;">✦ 日签</div>
+      <div class="hero-badge" style="display:inline-block;margin-bottom:1rem;">✦ 阅读室</div>
       <h1 class="section-title">
-        <span class="chinese-title gold-text" id="todayDate">今日日签</span>
+        <span class="chinese-title gold-text">三家经典</span>
       </h1>
       <p class="section-subtitle" style="margin:1rem auto 0;">
-        每日一句，照见内心。<br>不多，不少，刚好够一天。
+        佛 · 道 · 儒<br>修行不限于一家，智慧不囿于一派。
       </p>
     </div>
   </section>
 
-  <!-- Daily Quote Card -->
-  <section style="padding-top:0;">
-    <div class="container" style="max-width:600px;">
-      <div class="riqian-card" id="riqianCard">
-        <!-- Filled by JS -->
+  <!-- Reader View (hidden by default) -->
+  <section id="readerView" style="display:none;padding-top:0;">
+    <div class="container" style="max-width:760px;">
+      <div class="reader-toolbar">
+        <button class="btn btn-glass btn-sm" id="btnBack"><span style="margin-right:0.3rem;">←</span> 返回书库</button>
+        <div class="reader-nav">
+          <button class="btn btn-glass btn-sm" id="btnPrev" disabled>上一章</button>
+          <span class="reader-chapter-indicator" id="chapterIndicator"></span>
+          <button class="btn btn-glass btn-sm" id="btnNext" disabled>下一章</button>
+        </div>
       </div>
+      <div class="reader-content" id="readerContent"></div>
     </div>
   </section>
 
-  <!-- Browse all quotes -->
-  <section style="padding-top:0;">
+  <!-- Library View -->
+  <section id="libraryView" style="padding-top:0;">
     <div class="container" style="max-width:760px;">
-      <div class="fade-in">
-        <p class="section-label">✦ 三十日轮</p>
-        <h2 class="section-title">全部日签</h2>
-        <p class="section-subtitle" style="margin-bottom:var(--space-md);">
-          一个月的禅意，每天都是新的开始。
-        </p>
-        <div class="divider"></div>
+
+      <!-- Tradition Tabs -->
+      <div class="glass-strong" style="display:inline-flex;gap:0.25rem;padding:0.3rem;border-radius:100px;margin-bottom:var(--space-lg);" id="traditionTabs">
+        <button class="btn btn-sm btn-primary" data-tab="buddhist" style="border-radius:100px;">☸ 佛家</button>
+        <button class="btn btn-sm btn-glass" data-tab="daoist" style="border-radius:100px;">☯ 道家</button>
+        <button class="btn btn-sm btn-glass" data-tab="confucian" style="border-radius:100px;">📜 儒家</button>
       </div>
-      <div class="riqian-grid" id="riqianGrid">
-        <!-- Filled by JS -->
-      </div>
+
+      <!-- Text List -->
+      <div id="textList"></div>
     </div>
   </section>
+
+  <!-- Reading progress bar -->
+  <div class="reading-progress" id="readingProgress"></div>
 
   <footer class="footer">
     <div class="container">
@@ -110,7 +115,7 @@
     </div>
   </footer>
 
-  <script src="js/riqian.js"></script>
+  <script src="js/yuedu.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

@@ -1184,6 +1184,171 @@ section {
   font-weight: 600;
 }
 
+/* ----- Reading Room (阅读室) ----- */
+/* Text card list */
+.text-card {
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-sm);
+  transition: all var(--transition-default);
+}
+
+.text-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 32px var(--accent-glow);
+}
+
+.text-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.3rem;
+}
+
+.text-card-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.text-card-badge {
+  font-size: 0.65rem;
+  color: var(--accent);
+  background: var(--accent-glow);
+  padding: 0.2rem 0.6rem;
+  border-radius: 100px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.text-card-author {
+  font-size: 0.75rem;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+}
+
+.text-card-desc {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+}
+
+/* Reader toolbar */
+.reader-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--glass-border);
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.reader-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.reader-chapter-indicator {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  min-width: 3rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Reader content */
+.reader-content {
+  padding-bottom: var(--space-xl);
+}
+
+.chapter-header {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.chapter-header.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chapter-book-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1rem;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+  font-weight: 500;
+}
+
+.chapter-book-author {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.chapter-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: 0.1s;
+}
+
+.chapter-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chapter-body {
+  font-family: 'Noto Serif SC', 'Noto Sans SC', serif;
+  font-size: 1.05rem;
+  line-height: 2.1;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  text-align: justify;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: 0.2s;
+}
+
+.chapter-body.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.chapter-body p {
+  margin-bottom: 1.2em;
+  text-indent: 2em;
+}
+
+.chapter-body p:first-child {
+  text-indent: 0;
+}
+
+/* Reading progress bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-dim), var(--accent-light));
+  width: 0%;
+  z-index: 2000;
+  transition: width 0.4s ease;
+  border-radius: 0 2px 2px 0;
+}
+
 /* ----- Responsive reads ----- */
 @media (max-width: 768px) {
   .riqian-grid {
