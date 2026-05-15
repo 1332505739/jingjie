@@ -1707,3 +1707,28 @@ a:not(.btn):not(.navbar-logo):not(.navbar-links a):hover {
     font-size: 1rem;
   }
 }
+
+/* ----- Meridian table (经络表) ----- */
+.meridian-table td,
+.meridian-table th {
+  border-bottom: 1px solid var(--glass-border);
+  vertical-align: top;
+}
+
+.meridian-table tr:last-child td {
+  border-bottom: none;
+}
+
+.meridian-table tr:hover td {
+  background: var(--glass-bg);
+}
+
+@media (max-width: 768px) {
+  .meridian-table {
+    font-size: 0.78rem;
+  }
+  .meridian-table th,
+  .meridian-table td {
+    padding: 0.3rem 0.4rem;
+  }
+}
