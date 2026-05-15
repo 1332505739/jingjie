@@ -132,6 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
       readerContent.querySelectorAll('.chapter-header, .chapter-title, .chapter-body, .para-block').forEach(el => {
         el.classList.add('visible');
       });
+      readerContent.style.opacity = '1';
+      readerContent.style.transform = 'translateX(0)';
     }, 100);
 
     // Bind insight interactions
@@ -234,17 +236,23 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   function goPrev() {
     if (currentChapter > 0) {
-      currentChapter--;
-      renderChapter();
-      window.scrollTo(0, 0);
+      readerContent.style.opacity = '0';
+      readerContent.style.transform = 'translateX(16px)';
+      setTimeout(() => {
+        currentChapter--;
+        renderChapter();
+      }, 200);
     }
   }
 
   function goNext() {
     if (currentText && currentChapter < currentText.chapters.length - 1) {
-      currentChapter++;
-      renderChapter();
-      window.scrollTo(0, 0);
+      readerContent.style.opacity = '0';
+      readerContent.style.transform = 'translateX(-16px)';
+      setTimeout(() => {
+        currentChapter++;
+        renderChapter();
+      }, 200);
     }
   }
 

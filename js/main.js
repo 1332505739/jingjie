@@ -160,3 +160,59 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 });
+
+// ==========================================
+// 5. Scroll-to-top button
+// ==========================================
+(function() {
+  const btn = document.createElement('button');
+  btn.className = 'scroll-top-btn';
+  btn.setAttribute('aria-label', '回到顶部');
+  btn.innerHTML = '↑';
+  document.body.appendChild(btn);
+
+  let showTimeout;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+})();
+
+// ==========================================
+// 6. Navbar smart hide/show on scroll
+// ==========================================
+(function() {
+  const navbar = document.getElementById('navbar');
+  if (!navbar) return;
+  let lastScroll = 0;
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const current = window.pageYOffset;
+        if (current > 50) {
+          navbar.classList.add('scrolled');
+          if (current > lastScroll + 10 && current > 200) {
+            navbar.classList.add('nav-hidden');
+          } else if (current < lastScroll - 5) {
+            navbar.classList.remove('nav-hidden');
+          }
+        } else {
+          navbar.classList.remove('scrolled');
+          navbar.classList.remove('nav-hidden');
+        }
+        lastScroll = current;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+})();
