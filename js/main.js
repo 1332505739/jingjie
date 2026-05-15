@@ -68,58 +68,65 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 4. Video data store (for dynamic population)
+  // 4. Video data store & rendering
   // ==========================================
-  // This is where you'll add your actual video entries.
-  // When you have real videos, uncomment and populate this list.
-  // 
-  // const videoData = [
-  //   {
-  //     id: 1,
-  //     title: '视频标题',
-  //     description: '视频描述',
-  //     category: 'meditation',
-  //     date: '2026-05',
-  //     thumbnail: 'path/to/thumbnail.jpg',
-  //     url: 'https://...'
-  //   },
-  //   ...
-  // ];
-  //
-  // function renderVideos(filter = 'all') {
-  //   const grid = document.getElementById('videoGrid');
-  //   if (!grid) return;
-  //   
-  //   const filtered = filter === 'all' 
-  //     ? videoData 
-  //     : videoData.filter(v => v.category === filter);
-  //   
-  //   grid.innerHTML = filtered.map(v => `
-  //     <div class="glass video-card">
-  //       <div class="video-thumb">
-  //         <img src="${v.thumbnail}" alt="${v.title}" style="width:100%;height:100%;object-fit:cover;">
-  //         <div class="play-button">▶</div>
-  //       </div>
-  //       <div class="video-info">
-  //         <h3>${v.title}</h3>
-  //         <p>${v.description}</p>
-  //         <div class="video-meta">
-  //           <span>${v.date}</span>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   `).join('');
-  // }
-  //
-  // // Filter buttons
-  // document.querySelectorAll('[data-filter]').forEach(btn => {
-  //   btn.addEventListener('click', () => {
-  //     document.querySelectorAll('[data-filter]').forEach(b => {
-  //       b.className = b.className.replace('btn-primary', 'btn-glass');
-  //     });
-  //     btn.className = btn.className.replace('btn-glass', 'btn-primary');
-  //     renderVideos(btn.dataset.filter);
-  //   });
-  // });
+  const videoData = [
+    // {id:1, title:'视频标题', description:'描述', category:'meditation', date:'2026-05', thumbnail:'', url:''},
+  ];
+
+  const videoGrid = document.getElementById('videoGrid');
+  const videoEmpty = document.getElementById('videoEmptyState');
+  const videoFilters = document.getElementById('videoFilters');
+
+  function renderVideos(filter = 'all') {
+    if (!videoGrid) return;
+
+    const filtered = filter === 'all'
+      ? videoData
+      : videoData.filter(v => v.category === filter);
+
+    // Toggle empty state vs videos
+    if (filtered.length === 0) {
+      if (videoEmpty) videoEmpty.style.display = '';
+      if (videoFilters) videoFilters.style.display = 'none';
+      videoGrid.innerHTML = '';
+    } else {
+      if (videoEmpty) videoEmpty.style.display = 'none';
+      if (videoFilters) videoFilters.style.display = 'inline-flex';
+      videoGrid.innerHTML = filtered.map(v => `
+        <div class="glass video-card fade-in visible">
+          <div class="video-thumb">
+            ${v.thumbnail
+              ? `<img src="${v.thumbnail}" alt="${v.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;">`
+              : `<span class="placeholder-icon">☸</span>`}
+            <div class="play-button">▶</div>
+          </div>
+          <div class="video-info">
+            <h3>${v.title}</h3>
+            <p>${v.description}</p>
+            <div class="video-meta">
+              <span>${v.date}</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+  }
+
+  // Initialize videos page
+  renderVideos('all');
+
+  // Filter buttons
+  document.querySelectorAll('[data-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-filter]').forEach(b => {
+        b.classList.remove('btn-primary');
+        b.classList.add('btn-glass');
+      });
+      btn.classList.add('btn-primary');
+      btn.classList.remove('btn-glass');
+      renderVideos(btn.dataset.filter);
+    });
+  });
 
 });

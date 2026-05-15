@@ -22,6 +22,9 @@ jingjie/
 ├── videos.html         # 影音页面
 ├── experience.html     # 心语分享
 ├── about.html          # 关于页面
+├── 404.html            # 自定义 404 页面
+├── robots.txt          # 搜索引擎爬虫规则
+├── sitemap.xml         # 站点地图
 ├── css/
 │   └── style.css       # 完整设计系统
 ├── js/

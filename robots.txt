@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://1332505739.github.io/jingjie/sitemap.xml

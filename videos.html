@@ -5,6 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>影音 · 静界</title>
   <meta name="description" content="静界影音 — 佛学智慧与现代生活的交融视频分享。">
+  <!-- Open Graph -->
+  <meta property="og:title" content="以影传心 · 静界影音">
+  <meta property="og:description" content="每一帧都是心的映照。精选佛学智慧视频，用影像传递觉知与宁静。">
+  <meta property="og:url" content="https://1332505739.github.io/jingjie/videos">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="静界">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="以影传心 · 静界影音">
+  <meta name="twitter:description" content="每一帧都是心的映照。精选佛学智慧视频，用影像传递觉知与宁静。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://1332505739.github.io/jingjie/videos">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☽</text></svg>">
 </head>
@@ -51,8 +66,8 @@
   <!-- Video Listings -->
   <section style="padding-top:0;">
     <div class="container">
-      <!-- Category filter -->
-      <div class="glass-strong" style="display:inline-flex;gap:0.25rem;padding:0.3rem;border-radius:100px;margin-bottom:var(--space-lg);">
+      <!-- Category filter (hidden until videos are loaded) -->
+      <div id="videoFilters" class="glass-strong" style="display:none; gap:0.25rem;padding:0.3rem;border-radius:100px;margin-bottom:var(--space-lg);">
         <button class="btn btn-sm btn-primary" data-filter="all" style="border-radius:100px;">全部</button>
         <button class="btn btn-sm btn-glass" data-filter="meditation" style="border-radius:100px;">禅修</button>
         <button class="btn btn-sm btn-glass" data-filter="wisdom" style="border-radius:100px;">智慧</button>
@@ -63,7 +78,7 @@
         <!-- Videos will be dynamically populated by JS or use static placeholders -->
       </div>
 
-      <div class="empty-state glass" style="border-radius:var(--radius-lg);">
+      <div id="videoEmptyState" class="empty-state glass" style="border-radius:var(--radius-lg);">
         <div class="empty-icon">🎬</div>
         <h3>视频正在加载中...</h3>
         <p>你的视频正在剪辑中，完成后将第一时间发布在这里。<br>敬请期待！</p>
@@ -82,7 +97,7 @@
         </div>
         <div class="footer-links">
           <a href="about.html">关于</a>
-          <a href="https://github.com/tancong/jingjie" target="_blank">GitHub</a>
+          <a href="https://github.com/1332505739/jingjie" target="_blank">GitHub</a>
         </div>
       </div>
     </div>
