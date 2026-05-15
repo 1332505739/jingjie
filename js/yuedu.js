@@ -109,9 +109,13 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
 
-    // Update nav
+    // Update nav + reading time
     const total = currentText.chapters.length;
-    chapterIndicator.textContent = `${currentChapter + 1} / ${total}`;
+    const charCount = hasParagraphs
+      ? ch.paragraphs.reduce((s, p) => s + p.text.length, 0)
+      : (ch.content || '').length;
+    const readMin = Math.max(1, Math.round(charCount / 400));
+    chapterIndicator.textContent = `${currentChapter + 1} / ${total} · ${readMin}分钟`;
     document.getElementById('btnPrev').disabled = currentChapter === 0;
     document.getElementById('btnNext').disabled = currentChapter >= total - 1;
 

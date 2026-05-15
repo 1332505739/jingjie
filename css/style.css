@@ -1241,10 +1241,12 @@ section {
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--space-lg);
-  padding-bottom: var(--space-sm);
+  padding: var(--space-xs) 0;
   border-bottom: 1px solid var(--glass-border);
+  border-top: 1px solid var(--glass-border);
   flex-wrap: wrap;
   gap: var(--space-xs);
+  font-size: 0.85rem;
 }
 
 .reader-nav {
@@ -1253,12 +1255,18 @@ section {
   gap: var(--space-xs);
 }
 
+.reader-nav .btn-glass {
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+}
+
 .reader-chapter-indicator {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--text-tertiary);
-  min-width: 3rem;
+  min-width: 3.5rem;
   text-align: center;
   font-variant-numeric: tabular-nums;
+  font-weight: 400;
 }
 
 /* Reader content */
@@ -1268,7 +1276,8 @@ section {
 
 .chapter-header {
   text-align: center;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  margin-top: var(--space-lg);
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -1281,27 +1290,30 @@ section {
 
 .chapter-book-title {
   font-family: 'Noto Serif SC', serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: var(--accent);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.3rem;
   font-weight: 500;
+  letter-spacing: 0.08em;
 }
 
 .chapter-book-author {
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   color: var(--text-tertiary);
+  margin-bottom: var(--space-sm);
 }
 
 .chapter-title {
   font-family: 'Noto Serif SC', serif;
-  font-size: 1.3rem;
-  font-weight: 600;
-  margin-bottom: var(--space-md);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: var(--space-lg);
   color: var(--text-primary);
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
   transition-delay: 0.1s;
+  letter-spacing: 0.03em;
 }
 
 .chapter-title.visible {
@@ -1311,15 +1323,16 @@ section {
 
 .chapter-body {
   font-family: 'Noto Serif SC', 'Noto Sans SC', serif;
-  font-size: 1.05rem;
-  line-height: 2.1;
-  color: var(--text-secondary);
-  letter-spacing: 0.02em;
+  font-size: 1.15rem;
+  line-height: 2.2;
+  color: var(--text-primary);
+  letter-spacing: 0.025em;
   text-align: justify;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.6s ease, transform 0.6s ease;
   transition-delay: 0.2s;
+  word-break: break-word;
 }
 
 .chapter-body.visible {
@@ -1328,12 +1341,23 @@ section {
 }
 
 .chapter-body p {
-  margin-bottom: 1.2em;
+  margin-bottom: 1.5em;
   text-indent: 2em;
 }
 
 .chapter-body p:first-child {
   text-indent: 0;
+}
+
+@media (min-width: 769px) {
+  .chapter-body {
+    font-size: 1.25rem;
+    line-height: 2.3;
+  }
+
+  .chapter-title {
+    font-size: 2rem;
+  }
 }
 
 /* Reading progress bar */
@@ -1352,8 +1376,8 @@ section {
 /* ----- Paragraph blocks with insight ----- */
 .para-block {
   position: relative;
-  padding: var(--space-xs) var(--space-sm);
-  margin: 0 calc(-1 * var(--space-sm));
+  padding: 0.6rem 1rem;
+  margin: 0 calc(-1 * 1rem);
   border-radius: var(--radius-sm);
   transition: background 0.25s ease;
   cursor: default;
@@ -1373,13 +1397,14 @@ section {
 
 .para-dot {
   position: absolute;
-  right: 8px;
-  top: 8px;
-  font-size: 0.65rem;
+  right: 6px;
+  top: 4px;
+  font-size: 0.7rem;
   color: var(--accent);
   opacity: 0;
   transition: opacity 0.25s ease;
   pointer-events: auto;
+  padding: 4px;
 }
 
 .para-block.has-insight:hover .para-dot {
@@ -1407,8 +1432,8 @@ section {
 .insight-tooltip {
   position: fixed;
   z-index: 3000;
-  max-width: 380px;
-  padding: var(--space-sm) var(--space-md);
+  max-width: 420px;
+  padding: var(--space-md);
   background: var(--bg-surface);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -1429,18 +1454,31 @@ section {
 }
 
 .insight-content {
-  font-size: 0.82rem;
-  line-height: 1.75;
+  font-size: 0.9rem;
+  line-height: 1.85;
   color: var(--text-secondary);
 }
 
 .insight-content::before {
   content: '💡 ';
-  font-size: 0.7rem;
+  font-size: 0.75rem;
 }
 
 [data-theme="light"] .insight-tooltip {
   box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12), 0 0 24px var(--accent-glow);
+}
+
+/* Light mode reading comfort */
+[data-theme="light"] .chapter-body {
+  color: #3d3628;
+}
+
+[data-theme="light"] .chapter-header .divider {
+  opacity: 0.25;
+}
+
+[data-theme="light"] .reader-toolbar {
+  border-color: rgba(0, 0, 0, 0.08);
 }
 
 @media (max-width: 768px) {
