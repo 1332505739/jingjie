@@ -927,6 +927,288 @@ section {
   color: var(--text-primary);
 }
 
+/* ----- Reading Cards (静读) ----- */
+.reading-card {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.reading-card:last-child {
+  border-bottom: none;
+  margin-bottom: var(--space-xl);
+}
+
+.reading-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.reading-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  color: var(--gold, var(--accent-light));
+}
+
+.reading-sutra {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-sm);
+}
+
+.sutra-original {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: var(--text-primary);
+  letter-spacing: 0.03em;
+}
+
+.sutra-source {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+  margin-top: 0.5rem;
+  text-align: right;
+  font-style: italic;
+}
+
+.reading-interpretation {
+  padding: var(--space-sm) 0;
+}
+
+.reading-interpretation h3 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: var(--space-xs);
+  letter-spacing: 0.05em;
+}
+
+.reading-interpretation p {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+}
+
+.reading-interpretation p:last-child {
+  margin-bottom: 0;
+}
+
+/* ----- Daily Quote (日签) ----- */
+.riqian-today {
+  padding: var(--space-lg) var(--space-md);
+  border-radius: var(--radius-xl);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+.riqian-day {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: var(--space-md);
+}
+
+.riqian-quote {
+  font-family: 'Noto Serif SC', serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin-bottom: var(--space-sm);
+  letter-spacing: 0.03em;
+  border: none;
+  padding: 0;
+}
+
+.riqian-author {
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: var(--space-sm);
+  font-weight: 500;
+}
+
+.riqian-divider {
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+  margin: var(--space-sm) auto;
+  opacity: 0.4;
+}
+
+.riqian-note {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  line-height: 1.7;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Riqian grid */
+.riqian-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: var(--space-sm);
+  padding-bottom: var(--space-xl);
+}
+
+.riqian-grid-item {
+  padding: var(--space-sm);
+  border-radius: var(--radius-md);
+  cursor: default;
+}
+
+.riqian-grid-day {
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+  opacity: 0.6;
+}
+
+.riqian-grid-item blockquote {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin-bottom: 0.3rem;
+  border: none;
+  padding: 0;
+}
+
+.riqian-grid-author {
+  font-size: 0.7rem;
+  color: var(--text-tertiary);
+}
+
+/* ----- Section Nav (首页章节导航) ----- */
+.section-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.section-nav-card {
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: inherit;
+  transition: all var(--transition-default);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-nav-card:hover {
+  transform: translateY(-4px);
+}
+
+.section-nav-card .nav-card-icon {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-xs);
+  display: block;
+}
+
+.section-nav-card .nav-card-title {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--text-primary);
+}
+
+.section-nav-card .nav-card-desc {
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+}
+
+/* ----- Beginner Guide (入门) ----- */
+.guide-card {
+  margin-bottom: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+}
+
+.guide-card .guide-number {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--accent-glow);
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin-bottom: var(--space-sm);
+}
+
+.guide-card h3 {
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1.2rem;
+  margin-bottom: var(--space-xs);
+  color: var(--text-primary);
+}
+
+.guide-card p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 0.6rem;
+}
+
+.guide-card .guide-tip {
+  background: var(--glass-bg);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
+  margin-top: var(--space-sm);
+  font-size: 0.85rem;
+  color: var(--accent-light);
+  line-height: 1.7;
+}
+
+.guide-card .guide-tip::before {
+  content: '💡 试试看：';
+  font-weight: 600;
+}
+
+/* ----- Responsive reads ----- */
+@media (max-width: 768px) {
+  .riqian-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .section-nav {
+    grid-template-columns: 1fr;
+  }
+
+  .riqian-today {
+    padding: var(--space-md) var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .riqian-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .riqian-quote {
+    font-size: 1.2rem;
+  }
+}
+
 /* ----- Scrollbar ----- */
 ::-webkit-scrollbar {
   width: 6px;

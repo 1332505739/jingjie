@@ -6,18 +6,33 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://1332505739.github.io/jingjie/jingdu</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://1332505739.github.io/jingjie/riqian</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://1332505739.github.io/jingjie/rumen</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://1332505739.github.io/jingjie/videos</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://1332505739.github.io/jingjie/experience</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://1332505739.github.io/jingjie/about</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.5</priority>
   </url>
 </urlset>

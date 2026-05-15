@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日签 · 静界</title>
+  <meta name="description" content="静界日签 — 每日一禅，一句话照见内心。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap">
+  <!-- Open Graph -->
+  <meta property="og:title" content="每日一禅 · 静界日签">
+  <meta property="og:description" content="今日一句，照见内心。三十日一轮，日日新生。">
+  <meta property="og:url" content="https://1332505739.github.io/jingjie/riqian">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="静界">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="每日一禅 · 静界日签">
+  <meta name="twitter:description" content="今日一句，照见内心。">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://1332505739.github.io/jingjie/riqian">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☽</text></svg>">
+</head>
+<body>
+
+  <div class="background-canvas">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <span class="logo-icon">☽</span>
+        <span class="gold-text">静界</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="切换主题" title="切换亮色/暗色">☀</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="jingdu.html">静读</a></li>
+        <li><a href="riqian.html" class="active">日签</a></li>
+        <li><a href="videos.html">影音</a></li>
+        <li><a href="rumen.html">入门</a></li>
+        <li><a href="experience.html">心语</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <div class="hero-badge" style="display:inline-block;margin-bottom:1rem;">✦ 日签</div>
+      <h1 class="section-title">
+        <span class="chinese-title gold-text" id="todayDate">今日日签</span>
+      </h1>
+      <p class="section-subtitle" style="margin:1rem auto 0;">
+        每日一句，照见内心。<br>不多，不少，刚好够一天。
+      </p>
+    </div>
+  </section>
+
+  <!-- Daily Quote Card -->
+  <section style="padding-top:0;">
+    <div class="container" style="max-width:600px;">
+      <div class="riqian-card" id="riqianCard">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Browse all quotes -->
+  <section style="padding-top:0;">
+    <div class="container" style="max-width:760px;">
+      <div class="fade-in">
+        <p class="section-label">✦ 三十日轮</p>
+        <h2 class="section-title">全部日签</h2>
+        <p class="section-subtitle" style="margin-bottom:var(--space-md);">
+          一个月的禅意，每天都是新的开始。
+        </p>
+        <div class="divider"></div>
+      </div>
+      <div class="riqian-grid" id="riqianGrid">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand"><span class="gold-text">静界</span> · Realm of Stillness</div>
+          <div class="footer-text" style="margin-top:0.3rem;">年轻修行人的精神角落</div>
+        </div>
+        <div class="footer-links">
+          <a href="jingdu.html">静读</a>
+          <a href="riqian.html">日签</a>
+          <a href="rumen.html">入门</a>
+          <a href="about.html">关于</a>
+          <a href="https://github.com/1332505739/jingjie" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/riqian.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

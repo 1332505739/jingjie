@@ -18,7 +18,10 @@
 
 ```
 jingjie/
-├── index.html          # 首页
+├── index.html          # 首页（章节导航 + 精选内容）
+├── jingdu.html         # 静读 — 经典摘录与白话解读
+├── riqian.html         # 日签 — 每日一句禅语轮换
+├── rumen.html          # 入门 — 静坐/呼吸/正念指南
 ├── videos.html         # 影音页面
 ├── experience.html     # 心语分享
 ├── about.html          # 关于页面
@@ -26,9 +29,10 @@ jingjie/
 ├── robots.txt          # 搜索引擎爬虫规则
 ├── sitemap.xml         # 站点地图
 ├── css/
-│   └── style.css       # 完整设计系统
+│   └── style.css       # 完整设计系统（含亮/暗主题）
 ├── js/
-│   └── main.js         # 交互逻辑
+│   ├── main.js         # 核心交互 + 主题切换
+│   └── riqian.js       # 日签数据与渲染
 └── README.md           # 项目说明
 ```
 
