@@ -19,6 +19,31 @@
   <link rel="canonical" href="https://1332505739.github.io/jingjie/yuedu">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☽</text></svg>">
+  <style>
+    .reader-settings { background:var(--glass-bg); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:1px solid var(--glass-border); border-radius:var(--radius-lg); padding:var(--space-md); margin-bottom:var(--space-md); display:flex; flex-wrap:wrap; gap:var(--space-md); justify-content:center; }
+    .settings-group { text-align:center; }
+    .settings-label { display:block; font-size:.75rem; color:var(--text-tertiary); margin-bottom:.3rem; text-transform:uppercase; letter-spacing:.05em; }
+    .settings-row { display:flex; align-items:center; gap:.4rem; }
+    .settings-value { font-size:.85rem; color:var(--gold); min-width:2rem; display:inline-block; }
+    .settings-themes { display:flex; gap:.4rem; }
+    .theme-swatch { border:1px solid var(--glass-border); border-radius:var(--radius-sm); padding:.35rem .6rem; cursor:pointer; background:var(--glass-bg); color:var(--text-secondary); font-size:.8rem; transition:all .2s; font-family:inherit; display:flex; align-items:center; gap:.25rem; }
+    .theme-swatch:hover { border-color:var(--gold); }
+    .theme-swatch.active { border-color:var(--gold); background:rgba(212,175,55,.12); color:var(--gold); }
+    .reader-content.theme-parchment { background:rgba(245,235,210,.06); color:var(--text-primary); }
+    .reader-content.theme-moon { background:rgba(220,230,240,.06); color:var(--text-primary); }
+    .reader-content.size-small { font-size:.9em; }
+    .reader-content.size-medium { font-size:1em; }
+    .reader-content.size-large { font-size:1.15em; }
+    .reader-content.line-tight .chapter-body p { line-height:1.6; }
+    .reader-content.line-normal .chapter-body p { line-height:1.9; }
+    .reader-content.line-loose .chapter-body p { line-height:2.3; }
+    [data-theme="light"] .reader-content.theme-dark { background:rgba(10,10,30,.03); color:var(--text-primary); }
+    [data-theme="light"] .reader-content.theme-parchment { background:rgba(245,235,210,.15); color:#3a3020; }
+    [data-theme="light"] .reader-content.theme-moon { background:rgba(220,230,240,.15); color:#1a2a3a; }
+    @media (max-width:768px) {
+      .reader-settings { flex-direction:column; align-items:center; gap:var(--space-sm); }
+    }
+  </style>
 </head>
 <body>
 
@@ -73,7 +98,37 @@
           <span class="reader-chapter-indicator" id="chapterIndicator"></span>
           <button class="btn btn-glass btn-sm" id="btnNext" disabled>下一章</button>
         </div>
+        <button class="btn btn-glass btn-sm" id="btnSettings" title="阅读设置" aria-label="阅读设置">⚙</button>
       </div>
+
+      <!-- Reading settings panel -->
+      <div class="reader-settings" id="readerSettings" style="display:none;">
+        <div class="settings-group">
+          <label class="settings-label">字号</label>
+          <div class="settings-row">
+            <button class="btn btn-glass btn-sm" id="fontSizeDec" aria-label="缩小字号">A-</button>
+            <span class="settings-value" id="fontSizeVal">中</span>
+            <button class="btn btn-glass btn-sm" id="fontSizeInc" aria-label="放大字号">A+</button>
+          </div>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label">行距</label>
+          <div class="settings-row">
+            <button class="btn btn-glass btn-sm" id="lineHeightDec" aria-label="缩小行距">—</button>
+            <span class="settings-value" id="lineHeightVal">中</span>
+            <button class="btn btn-glass btn-sm" id="lineHeightInc" aria-label="加大行距">+</button>
+          </div>
+        </div>
+        <div class="settings-group">
+          <label class="settings-label">阅读背景</label>
+          <div class="settings-themes">
+            <button class="theme-swatch dark active" data-theme="dark" title="暗夜" aria-label="暗夜背景">🌑<span>暗夜</span></button>
+            <button class="theme-swatch parchment" data-theme="parchment" title="羊皮纸" aria-label="羊皮纸背景">📜<span>羊皮纸</span></button>
+            <button class="theme-swatch moon" data-theme="moon" title="月白" aria-label="月白背景">🌙<span>月白</span></button>
+          </div>
+        </div>
+      </div>
+
       <div class="reader-content" id="readerContent"></div>
     </div>
   </section>

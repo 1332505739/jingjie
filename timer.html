@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实修 · 静界</title>
+  <meta name="description" content="静界实修 — 三教修行计时器。坐禅、站桩、省身，记录每一次修行。">
+  <meta property="og:title" content="实修计时 · 静界">
+  <meta property="og:description" content="佛修心 · 道修身 · 儒修世。三教实修计时器，记录你的每一次修行。">
+  <meta property="og:url" content="https://1332505739.github.io/jingjie/timer">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="静界">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="实修计时 · 静界">
+  <meta name="twitter:description" content="佛修心 · 道修身 · 儒修世。三教实修计时器。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="canonical" href="https://1332505739.github.io/jingjie/timer">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☽</text></svg>">
+  <style>
+    /* Timer-specific styles */
+    .timer-page { display:flex; flex-direction:column; align-items:center; padding-top:2rem; }
+    .timer-circle { width:260px; height:260px; border-radius:50%; background:var(--glass-bg); backdrop-filter:blur(24px); -webkit-backdrop-filter:blur(24px); border:2px solid var(--glass-border); display:flex; flex-direction:column; align-items:center; justify-content:center; position:relative; margin:2rem auto; transition:border-color .4s; }
+    .timer-circle.running { border-color:var(--gold); box-shadow:0 0 40px rgba(212,175,55,.15); }
+    .timer-circle.paused { border-color:var(--text-secondary); }
+    .timer-circle.finished { border-color:var(--gold); animation: timer-glow 1.5s ease-in-out infinite; }
+    @keyframes timer-glow { 0%,100%{box-shadow:0 0 30px rgba(212,175,55,.1)} 50%{box-shadow:0 0 60px rgba(212,175,55,.25)} }
+    .timer-display { font-family:'Noto Serif SC',serif; font-size:3.2rem; font-weight:700; color:var(--gold); letter-spacing:.05em; font-variant-numeric:tabular-nums; }
+    .timer-label { font-size:.85rem; color:var(--text-secondary); margin-top:.3rem; }
+    .timer-ring { position:absolute; top:0; left:0; width:100%; height:100%; }
+    .timer-ring circle { fill:none; stroke:var(--gold); stroke-width:2; stroke-linecap:round; transform:rotate(-90deg); transform-origin:center; transition:stroke-dashoffset .3s linear; }
+    .timer-ring .bg { stroke:var(--glass-border); }
+    .mode-tabs { display:inline-flex; gap:.25rem; padding:.3rem; border-radius:100px; background:var(--glass-bg); backdrop-filter:blur(12px); border:1px solid var(--glass-border); margin-bottom:1.5rem; }
+    .mode-tab { padding:.5rem 1.2rem; border-radius:100px; border:none; background:none; color:var(--text-secondary); font-size:.9rem; cursor:pointer; transition:all .25s; font-family:inherit; white-space:nowrap; }
+    .mode-tab.active { background:var(--gold); color:#1a1a2e; font-weight:600; }
+    .mode-desc { text-align:center; max-width:400px; margin:0 auto 1rem; color:var(--text-secondary); font-size:.9rem; line-height:1.6; min-height:3.2em; }
+    .duration-presets { display:flex; gap:.5rem; flex-wrap:wrap; justify-content:center; margin-bottom:2rem; }
+    .duration-btn { padding:.5rem 1rem; border-radius:100px; border:1px solid var(--glass-border); background:var(--glass-bg); backdrop-filter:blur(8px); color:var(--text-primary); cursor:pointer; font-size:.85rem; transition:all .2s; font-family:inherit; }
+    .duration-btn:hover { border-color:var(--gold); color:var(--gold); }
+    .duration-btn.active { background:var(--gold); color:#1a1a2e; border-color:var(--gold); }
+    .timer-controls { display:flex; gap:.75rem; margin-top:1.5rem; }
+    .btn-timer { width:48px; height:48px; border-radius:50%; border:1px solid var(--glass-border); background:var(--glass-bg); backdrop-filter:blur(12px); color:var(--text-primary); font-size:1.2rem; cursor:pointer; transition:all .2s; display:flex; align-items:center; justify-content:center; }
+    .btn-timer:hover { border-color:var(--gold); color:var(--gold); }
+    .btn-timer.primary { background:var(--gold); color:#1a1a2e; border-color:var(--gold); width:56px; height:56px; font-size:1.4rem; }
+    .btn-timer.primary:hover { transform:scale(1.05); }
+    .session-summary { margin-top:2rem; padding:1.5rem; border-radius:var(--radius-lg); background:var(--glass-bg); backdrop-filter:blur(16px); border:1px solid var(--glass-border); text-align:center; max-width:400px; width:100%; display:none; }
+    .session-summary.visible { display:block; }
+    .summary-title { color:var(--gold); font-weight:600; margin-bottom:.5rem; }
+    .summary-stats { display:flex; justify-content:center; gap:2rem; margin-top:1rem; }
+    .summary-stat { text-align:center; }
+    .summary-stat-value { font-size:1.5rem; font-weight:700; color:var(--gold); }
+    .summary-stat-label { font-size:.75rem; color:var(--text-secondary); margin-top:.2rem; }
+    .streak-badge { display:inline-flex; align-items:center; gap:.4rem; padding:.3rem .8rem; border-radius:100px; background:var(--gold); color:#1a1a2e; font-size:.8rem; font-weight:600; margin-bottom:1rem; }
+    @media (max-width:600px) {
+      .timer-circle { width:220px; height:220px; }
+      .timer-display { font-size:2.6rem; }
+      .mode-tab { padding:.4rem .8rem; font-size:.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-canvas">
+    <div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <span class="logo-icon">☽</span>
+        <span class="gold-text">静界</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="切换主题" title="切换亮色/暗色">☀</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="yuedu.html">阅读室</a></li>
+        <li><a href="riqian.html">日签</a></li>
+        <li><a href="timer.html" class="active">实修</a></li>
+        <li><a href="rumen.html">入门</a></li>
+        <li><a href="experience.html">心语</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <div class="hero-badge" style="display:inline-block;margin-bottom:1rem;">✦ 实修</div>
+      <h1 class="section-title">
+        <span class="chinese-title gold-text">以行为证</span>
+      </h1>
+      <p class="section-subtitle" style="margin:1rem auto 0;">
+        佛修心 · 道修身 · 儒修世<br>
+        行一分，得一分的功夫。
+      </p>
+    </div>
+  </section>
+
+  <section class="timer-page">
+    <div class="container" style="display:flex;flex-direction:column;align-items:center;">
+
+      <!-- Streak badge -->
+      <div class="streak-badge" id="streakBadge">🔥 连续 0 天</div>
+
+      <!-- Mode selection -->
+      <div class="mode-tabs" id="modeTabs">
+        <button class="mode-tab active" data-mode="buddhist">☸ 禅坐</button>
+        <button class="mode-tab" data-mode="daoist">☯ 站桩/吐纳</button>
+        <button class="mode-tab" data-mode="confucian">📜 省身</button>
+      </div>
+
+      <p class="mode-desc" id="modeDesc">闭目静坐，观息出入。不计时间长短，只在每一息中安住。</p>
+
+      <!-- Duration presets -->
+      <div class="duration-presets" id="durationPresets">
+        <button class="duration-btn active" data-min="15">15分</button>
+        <button class="duration-btn" data-min="20">20分</button>
+        <button class="duration-btn" data-min="30">30分</button>
+        <button class="duration-btn" data-min="45">45分</button>
+      </div>
+
+      <!-- Timer circle -->
+      <div class="timer-circle" id="timerCircle">
+        <svg class="timer-ring" viewBox="0 0 260 260">
+          <circle class="bg" cx="130" cy="130" r="120"/>
+          <circle id="timerProgress" cx="130" cy="130" r="120" stroke-dasharray="754" stroke-dashoffset="0"/>
+        </svg>
+        <div class="timer-display" id="timerDisplay">15:00</div>
+        <div class="timer-label" id="timerLabel">准备开始</div>
+      </div>
+
+      <!-- Controls -->
+      <div class="timer-controls">
+        <button class="btn-timer" id="btnReset" title="重置" aria-label="重置">↺</button>
+        <button class="btn-timer primary" id="btnStart" title="开始" aria-label="开始">▶</button>
+        <button class="btn-timer" id="btnSkip" title="跳过（提前结束）" aria-label="提前结束" style="display:none;">⏭</button>
+      </div>
+
+      <!-- Post-session summary -->
+      <div class="session-summary" id="sessionSummary">
+        <div class="summary-title">✦ 本次修行完成</div>
+        <p style="color:var(--text-secondary);margin-top:.3rem;" id="summaryMode"></p>
+        <div class="summary-stats">
+          <div class="summary-stat">
+            <div class="summary-stat-value" id="summaryDuration">15分</div>
+            <div class="summary-stat-label">本次时长</div>
+          </div>
+          <div class="summary-stat">
+            <div class="summary-stat-value" id="summaryToday">1</div>
+            <div class="summary-stat-label">今日次数</div>
+          </div>
+          <div class="summary-stat">
+            <div class="summary-stat-value" id="summaryStreak">0天</div>
+            <div class="summary-stat-label">连续天数</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand"><span class="gold-text">静界</span> · Realm of Stillness</div>
+          <div class="footer-text" style="margin-top:0.3rem;">年轻修行人的精神角落</div>
+        </div>
+        <div class="footer-links">
+          <a href="yuedu.html">阅读室</a>
+          <a href="riqian.html">日签</a>
+          <a href="timer.html">实修</a>
+          <a href="rumen.html">入门</a>
+          <a href="experience.html">心语</a>
+          <a href="about.html">关于</a>
+          <a href="https://github.com/1332505739/jingjie" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/timer.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

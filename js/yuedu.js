@@ -318,4 +318,75 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   renderTextList('buddhist');
+
+  // ==========================================
+  // Reading Settings (font / line-height / background)
+  // ==========================================
+  var settings = { fontSize:'medium', lineHeight:'normal', bg:'dark' };
+  try {
+    var saved = JSON.parse(localStorage.getItem('jingjie-reading-settings'));
+    if (saved) settings = saved;
+  } catch(e) {}
+  var readerContent = document.getElementById('readerContent');
+
+  function applySettings() {
+    if (!readerContent) return;
+    readerContent.classList.remove('size-small','size-medium','size-large');
+    readerContent.classList.remove('line-tight','line-normal','line-loose');
+    readerContent.classList.remove('theme-dark','theme-parchment','theme-moon');
+    readerContent.classList.add('size-' + settings.fontSize);
+    readerContent.classList.add('line-' + settings.lineHeight);
+    readerContent.classList.add('theme-' + settings.bg);
+    // Update UI
+    document.getElementById('fontSizeVal').textContent = {small:'小',medium:'中',large:'大'}[settings.fontSize];
+    document.getElementById('lineHeightVal').textContent = {tight:'紧',normal:'中',loose:'松'}[settings.lineHeight];
+    document.querySelectorAll('.theme-swatch').forEach(function(el) {
+      el.classList.toggle('active', el.dataset.theme === settings.bg);
+    });
+  }
+
+  function saveSettings() {
+    try { localStorage.setItem('jingjie-reading-settings', JSON.stringify(settings)); } catch(e) {}
+    applySettings();
+  }
+
+  // Settings panel toggle
+  document.getElementById('btnSettings').addEventListener('click', function() {
+    var panel = document.getElementById('readerSettings');
+    panel.style.display = panel.style.display === 'none' ? '' : 'none';
+  });
+
+  // Font size
+  document.getElementById('fontSizeDec').addEventListener('click', function() {
+    var sizes = ['small','medium','large'];
+    var idx = sizes.indexOf(settings.fontSize);
+    if (idx > 0) { settings.fontSize = sizes[idx - 1]; saveSettings(); }
+  });
+  document.getElementById('fontSizeInc').addEventListener('click', function() {
+    var sizes = ['small','medium','large'];
+    var idx = sizes.indexOf(settings.fontSize);
+    if (idx < sizes.length - 1) { settings.fontSize = sizes[idx + 1]; saveSettings(); }
+  });
+
+  // Line height
+  document.getElementById('lineHeightDec').addEventListener('click', function() {
+    var heights = ['tight','normal','loose'];
+    var idx = heights.indexOf(settings.lineHeight);
+    if (idx > 0) { settings.lineHeight = heights[idx - 1]; saveSettings(); }
+  });
+  document.getElementById('lineHeightInc').addEventListener('click', function() {
+    var heights = ['tight','normal','loose'];
+    var idx = heights.indexOf(settings.lineHeight);
+    if (idx < heights.length - 1) { settings.lineHeight = heights[idx + 1]; saveSettings(); }
+  });
+
+  // Background theme
+  document.querySelectorAll('.theme-swatch').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      settings.bg = btn.dataset.theme;
+      saveSettings();
+    });
+  });
+
+  applySettings();
 });

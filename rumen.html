@@ -4,32 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>入门 · 静界</title>
-  <meta name="description" content="静界入门 — 修行基础指南：静坐、呼吸、正念、任督二脉、奇经八脉与实用穴位。">
+  <meta name="description" content="静界入门 — 佛修心 · 道修身 · 儒修世。三教修行框架，给每一个想要开始的人。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap">
-  <!-- Open Graph -->
   <meta property="og:title" content="从零开始 · 静界入门">
-  <meta property="og:description" content="静坐、呼吸、正念、任督二脉与实用穴位——身安而后道隆。">
+  <meta property="og:description" content="佛修心 · 道修身 · 儒修世。三条路，一个方向——回到你本来的样子。">
   <meta property="og:url" content="https://1332505739.github.io/jingjie/rumen">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="静界">
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="从零开始 · 静界入门">
-  <meta name="twitter:description" content="静坐、呼吸、正念、任督二脉与实用穴位。">
-  <!-- Canonical -->
+  <meta name="twitter:description" content="佛修心 · 道修身 · 儒修世。三条路，一个方向。">
   <link rel="canonical" href="https://1332505739.github.io/jingjie/rumen">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☽</text></svg>">
+  <style>
+    .school-section { margin-bottom:var(--space-xl); }
+    .school-header { text-align:center; margin-bottom:var(--space-lg); }
+    .school-icon { font-size:2.5rem; margin-bottom:var(--space-xs); }
+    .school-title { font-family:'Noto Serif SC',serif; font-size:1.6rem; margin-bottom:.3rem; }
+    .school-subtitle { color:var(--text-tertiary); font-size:.9rem; max-width:500px; margin:0 auto; line-height:1.6; }
+    .guide-card { padding:var(--space-lg) var(--space-md); border-radius:var(--radius-lg); margin-bottom:var(--space-md); }
+    .guide-number { display:inline-flex; align-items:center; justify-content:center; width:32px; height:32px; border-radius:50%; background:var(--gold); color:#1a1a2e; font-weight:700; font-size:.85rem; margin-bottom:var(--space-sm); }
+    .guide-card h3 { font-family:'Noto Serif SC',serif; font-size:1.15rem; margin-bottom:var(--space-sm); color:var(--text-primary); }
+    .guide-card p { color:var(--text-secondary); line-height:1.8; margin-bottom:.6rem; font-size:.92rem; }
+    .guide-tip { margin-top:var(--space-sm); padding:var(--space-sm); border-radius:var(--radius-sm); background:rgba(212,175,55,.08); border-left:2px solid var(--gold); font-size:.85rem; color:var(--gold); line-height:1.6; }
+    .section-divider { text-align:center; margin:var(--space-xl) 0; }
+    .section-divider span { display:inline-block; width:40px; height:1px; background:var(--glass-border); vertical-align:middle; }
+    .section-divider .icon { margin:0 1rem; font-size:1.2rem; color:var(--text-tertiary); }
+    .meridian-table { width:100%; margin-top:var(--space-sm); border-collapse:collapse; }
+    .meridian-table th { padding:.5rem; text-align:left; font-size:.85rem; color:var(--accent); }
+    .meridian-table td { padding:.4rem .5rem; font-size:.85rem; color:var(--text-secondary); }
+    .meridian-table tr { border-bottom:1px solid var(--glass-border); }
+    .placeholder-card { text-align:center; padding:var(--space-lg); border:1px dashed var(--glass-border); border-radius:var(--radius-lg); opacity:.7; }
+    .placeholder-card .icon { font-size:2rem; margin-bottom:.5rem; }
+    .placeholder-card h3 { font-size:1rem; color:var(--text-secondary); }
+    .placeholder-card p { font-size:.85rem; color:var(--text-tertiary); margin-top:.3rem; }
+    @media (min-width:768px) { .guide-card { padding:var(--space-lg); } }
+  </style>
 </head>
 <body>
 
   <div class="background-canvas">
-    <div class="orb"></div>
-    <div class="orb"></div>
-    <div class="orb"></div>
-    <div class="orb"></div>
+    <div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div>
   </div>
 
   <nav class="navbar" id="navbar">
@@ -46,7 +64,7 @@
         <li><a href="index.html">首页</a></li>
         <li><a href="yuedu.html">阅读室</a></li>
         <li><a href="riqian.html">日签</a></li>
-        <li><a href="videos.html">影音</a></li>
+        <li><a href="timer.html">实修</a></li>
         <li><a href="rumen.html" class="active">入门</a></li>
         <li><a href="experience.html">心语</a></li>
       </ul>
@@ -61,7 +79,8 @@
         <span class="chinese-title gold-text">从零开始</span>
       </h1>
       <p class="section-subtitle" style="margin:1rem auto 0;">
-        给每一个想要开始的人。<br>心法、身法、医法——修行不偏废。
+        佛修心 · 道修身 · 儒修世<br>
+        三条路，一个方向——回到你本来的样子。
       </p>
     </div>
   </section>
@@ -69,153 +88,166 @@
   <section style="padding-top:0;">
     <div class="container" style="max-width:800px;">
 
-      <!-- #1 静坐 -->
-      <div class="glass guide-card fade-in">
-        <div class="guide-number">1</div>
-        <h3>静坐 · 安住当下</h3>
-        <p>找一个安静的地方坐下。椅子上、床上、地板上都可以。不需要盘腿，舒服最重要。背可以微微挺直，但不用刻意用力。</p>
-        <p>闭上眼睛。感受身体接触椅子/地面的感觉。重量、温度、质地。这是在把你的注意力从「脑子里」拉回「身体里」。</p>
-        <p>然后自然地呼吸。不用控制呼吸的节奏，只是「看着」它——像在河岸边看水流一样。吸气时，知道自己在吸气。呼气时，知道自己在呼气。</p>
-        <p>你会发现杂念一个接一个冒出来。这很正常，你不是在失败。只要发现了，就轻轻把注意力带回呼吸。一次又一次。就像训练小狗——温柔而坚定。</p>
-        <p>从<strong>5分钟</strong>开始就够了。每天一次。5分钟之后可以慢慢延长。不要追求「空」，那只会让你更紧张。静坐的目的不是消除念头，是学会和念头和平共处。</p>
-        <div class="guide-tip">今天睡前，关掉手机，坐5分钟。就5分钟。</div>
-      </div>
+      <!-- ============ ☸ 佛家：修心 ============ -->
+      <div class="school-section">
+        <div class="school-header">
+          <div class="school-icon">☸</div>
+          <h2 class="school-title"><span class="gold-text">佛修心</span></h2>
+          <p class="school-subtitle">佛家的核心在「心」。不是拜佛求保佑，是向内观照——看清心的运作规律，从烦恼中解脱。</p>
+        </div>
 
-      <!-- #2 呼吸 -->
-      <div class="glass guide-card fade-in fade-in-delay-1">
-        <div class="guide-number">2</div>
-        <h3>呼吸 · 身体的门铃</h3>
-        <p>呼吸是唯一你能主观控制、但又会自动进行的身体功能。它是连接意识与无意识的桥梁。</p>
-        <p>当你焦虑时，呼吸会变短变浅。当你放松时，呼吸自然变深变长。<strong>反过来也成立</strong>：你可以通过调整呼吸来调整情绪。</p>
-        <p>一个简单的呼吸法：<strong>4-4-4-4</strong></p>
-        <p>· 吸气 4 秒<br>· 屏息 4 秒<br>· 呼气 4 秒<br>· 屏息 4 秒<br>循环 3-5 次。</p>
-        <p>这叫做「方框呼吸法」（Box Breathing），美国海军海豹突击队也在用。它能快速降低心率、平复焦虑。在任何场合都可以用——开会前、考试前、睡前。</p>
-        <p>另一个简单的练习：<strong>腹式呼吸</strong>。躺下来，一只手放在胸口，一只手放在腹部。吸气时让腹部鼓起来（胸口尽量不动），呼气时腹部自然回落。这是婴儿天生就会的呼吸方式，成人在压力下往往忘记了。</p>
-        <div class="guide-tip">下次感到紧张时，做一个 4-4-4-4 循环。感觉一下身体的变化。</div>
-      </div>
+        <div class="glass guide-card fade-in">
+          <div class="guide-number">1</div>
+          <h3>静坐 · 安住当下</h3>
+          <p>找一个安静的地方坐下。椅子上、床上、地板上都可以。不需要盘腿，舒服最重要。背可以微微挺直，但不用刻意用力。</p>
+          <p>闭上眼睛。感受身体接触椅子/地面的感觉。重量、温度、质地。这是在把你的注意力从「脑子里」拉回「身体里」。</p>
+          <p>然后自然地呼吸。不用控制呼吸的节奏，只是「看着」它——像在河岸边看水流一样。吸气时，知道自己在吸气。呼气时，知道自己在呼气。</p>
+          <p>你会发现杂念一个接一个冒出来。这很正常，你不是在失败。只要发现了，就轻轻把注意力带回呼吸。一次又一次。就像训练小狗——温柔而坚定。</p>
+          <p>从<strong>5分钟</strong>开始就够了。每天一次。5分钟之后可以慢慢延长。不要追求「空」，那只会让你更紧张。静坐的目的不是消除念头，是学会和念头和平共处。</p>
+          <div class="guide-tip">🕐 今天睡前，关掉手机，坐5分钟。就5分钟。或打开「<a href="timer.html" style="color:var(--gold);">实修计时器</a>」辅助。</div>
+        </div>
 
-      <!-- #3 正念 -->
-      <div class="glass guide-card fade-in fade-in-delay-2">
-        <div class="guide-number">3</div>
-        <h3>正念 · 生活中的修行</h3>
-        <p>正念（Mindfulness）说穿了就是一句话：<strong>知道自己在做什么</strong>。</p>
-        <p>吃饭的时候，知道自己在吃饭——而不是刷手机。走路的时候，感受脚底和地面的接触。洗碗的时候，感受温水和洗洁精在手上的触感。</p>
-        <p>这不是什么高深的修行。这就是「活在当下」的技术实现。</p>
-        <p>初学者容易犯的错：以为正念就是「一直保持专注」。其实不是。正念的核心是<strong>「走神了，然后回来」</strong>的那个动作。每一次回来，都是大脑的一次正念练习。就像肌肉训练——重要的不是举多重，而是重复多少次。</p>
-        <p>建议从<strong>一件日常小事</strong>开始：</p>
-        <p>· 选一个每天都会做的事情（比如刷牙、泡茶）<br>· 这一周，每次做这件事的时候，刻意放慢，全程保持觉知<br>· 刷到走神没关系，发现了就回来，继续感受</p>
-        <p>一周后，你会惊讶地发现——原来刷牙可以这么宁静。</p>
-        <div class="guide-tip">本周每天选一件事（刷牙、泡茶、散步），用慢速+觉知的方式完成。</div>
-      </div>
+        <div class="glass guide-card fade-in fade-in-delay-1">
+          <div class="guide-number">2</div>
+          <h3>呼吸 · 身体的门铃</h3>
+          <p>呼吸是唯一你能主观控制、但又会自动进行的身体功能。它是连接意识与无意识的桥梁。</p>
+          <p>当你焦虑时，呼吸会变短变浅。当你放松时，呼吸自然变深变长。<strong>反过来也成立</strong>：你可以通过调整呼吸来调整情绪。</p>
+          <p>一个简单的呼吸法：<strong>4-4-4-4 方框呼吸</strong></p>
+          <p>· 吸气 4 秒 → 屏息 4 秒 → 呼气 4 秒 → 屏息 4 秒<br>循环 3-5 次。在任何场合都可以用——开会前、考试前、睡前。</p>
+          <p>另一个练习：<strong>腹式呼吸</strong>。躺下来，一只手放在胸口，一只手放在腹部。吸气时让腹部鼓起来（胸口尽量不动），呼气时腹部自然回落。这是婴儿天生就会的呼吸方式。</p>
+          <div class="guide-tip">🫁 下次感到紧张时，做一个 4-4-4-4 循环。感受身体的变化。</div>
+        </div>
 
-      <!-- === 中医修身 === -->
-      <div style="text-align:center;margin:var(--space-xl) 0 var(--space-md);" class="fade-in">
-        <div class="hero-badge" style="display:inline-block;">✦ 中医修身</div>
-        <h2 style="font-family:'Noto Serif SC',serif;font-size:1.6rem;margin-top:var(--space-sm);">
-          <span class="gold-text">身安而后道隆</span>
-        </h2>
-        <p style="color:var(--text-tertiary);font-size:0.9rem;margin-top:0.5rem;">
-          身体是修行的道场。了解经络，就是了解你身体里那条「看不见的河」。
-        </p>
-      </div>
-
-      <!-- 任督二脉图 -->
-      <div class="glass guide-card fade-in" style="padding:var(--space-md);text-align:center;">
-        <div style="max-width:600px;margin:0 auto;color:var(--text-primary);">
-          <img src="images/rendu.svg" alt="任督二脉图" style="width:100%;height:auto;" loading="lazy">
+        <div class="glass guide-card fade-in fade-in-delay-2">
+          <div class="guide-number">3</div>
+          <h3>正念 · 生活中的修行</h3>
+          <p>正念（Mindfulness）说穿了就是一句话：<strong>知道自己在做什么</strong>。</p>
+          <p>吃饭的时候，知道自己在吃饭——而不是刷手机。走路的时候，感受脚底和地面的接触。洗碗的时候，感受温水和洗洁精在手上的触感。</p>
+          <p>这不是什么高深的修行——这就是「活在当下」的技术实现。核心是<strong>「走神了，然后回来」</strong>的那个动作。每一次回来，都是大脑的一次正念练习。</p>
+          <p>建议从<strong>一件日常小事</strong>开始：选一个每天都会做的事情（比如刷牙、泡茶），这一周每次做的时候刻意放慢，全程保持觉知。</p>
+          <div class="guide-tip">🪥 本周每天选一件事（刷牙、泡茶、散步），用慢速+觉知的方式完成。</div>
         </div>
       </div>
 
-      <!-- #4 任督二脉 -->
-      <div class="glass guide-card fade-in fade-in-delay-1">
-        <div class="guide-number">4</div>
-        <h3>任督二脉 · 小周天</h3>
-        <p><strong>任脉</strong>走身体前正中线，从会阴沿腹部、胸部到下颌。属阴，统管全身阴经，称为「阴脉之海」。</p>
-        <p><strong>督脉</strong>走身体后正中线，从会阴沿脊柱、后颈、头顶到上唇。属阳，统管全身阳经，称为「阳脉之海」。</p>
-        <p>两条脉在口唇处通过舌抵上腭相接，形成一个完整的环路——这就是<strong>「小周天」</strong>。</p>
-        <p>武侠小说里常说「打通任督二脉」，其实从中医角度看，任督二脉本来就是通的——不通人就死了。修行的目标不是「打通」，而是让气流更加顺畅、充沛。</p>
-        <p>练小周天的方法：静坐时舌抵上腭（搭鹊桥），意守丹田。吸气时想象气从督脉上升到头顶，呼气时从任脉下降到丹田。循环往复。</p>
-        <div class="guide-tip">静坐时舌抵上腭，感受口腔中津液自然分泌——这就是「玉液还丹」的初级体验。</div>
-      </div>
+      <!-- ============ ☯ 分隔 ============ -->
+      <div class="section-divider"><span></span><span class="icon">☯</span><span></span></div>
 
-      <!-- #5 奇经八脉 -->
-      <div class="glass guide-card fade-in fade-in-delay-2">
-        <div class="guide-number">5</div>
-        <h3>奇经八脉 · 人体的能量网络</h3>
-        <p>人体有十二正经（对应五脏六腑）和<strong>奇经八脉</strong>。奇经八脉是十二正经之外的八条特殊经脉，调节全身气血的盛衰。</p>
-        <table class="meridian-table" style="width:100%;margin-top:var(--space-sm);border-collapse:collapse;">
-          <thead>
-            <tr style="border-bottom:1px solid var(--glass-border);">
-              <th style="padding:0.5rem;text-align:left;font-size:0.85rem;color:var(--accent);">经脉</th>
-              <th style="padding:0.5rem;text-align:left;font-size:0.85rem;color:var(--accent);">位置</th>
-              <th style="padding:0.5rem;text-align:left;font-size:0.85rem;color:var(--accent);">功能</th>
-            </tr>
-          </thead>
-          <tbody style="font-size:0.85rem;color:var(--text-secondary);">
-            <tr><td style="padding:0.4rem 0.5rem;"><strong>任脉</strong></td><td style="padding:0.4rem 0.5rem;">前正中线</td><td style="padding:0.4rem 0.5rem;">阴脉之海，主胞胎</td></tr>
-            <tr><td style="padding:0.4rem 0.5rem;"><strong>督脉</strong></td><td style="padding:0.4rem 0.5rem;">后正中线</td><td style="padding:0.4rem 0.5rem;">阳脉之海，主脑髓</td></tr>
-            <tr><td style="padding:0.4rem 0.5rem;"><strong>冲脉</strong></td><td style="padding:0.4rem 0.5rem;">腹胸之内</td><td style="padding:0.4rem 0.5rem;">十二经之海，主生殖</td></tr>
-            <tr><td style="padding:0.4rem 0.5rem;"><strong>带脉</strong></td><td style="padding:0.4rem 0.5rem;">腰腹一周</td><td style="padding:0.4rem 0.5rem;">约束诸经，如束带然</td></tr>
-            <tr><td style="padding:0.4rem 0.5rem;"><strong>阳跷脉</strong></td><td style="padding:0.4rem 0.5rem;">下肢外侧</td><td style="padding:0.4rem 0.5rem;">主肢体运动，司眼睑开合</td></tr>
-            <tr><td style="padding:0.4rem 0.5rem;"><strong>阴跷脉</strong></td><td style="padding:0.4rem 0.5rem;">下肢内侧</td><td style="padding:0.4rem 0.5rem;">主下肢运动</td></tr>
-            <tr><td style="padding:0.4rem 0.5rem;"><strong>阳维脉</strong></td><td style="padding:0.4rem 0.5rem;">下肢外侧→肩</td><td style="padding:0.4rem 0.5rem;">维系诸阳经</td></tr>
-            <tr><td style="padding:0.4rem 0.5rem;"><strong>阴维脉</strong></td><td style="padding:0.4rem 0.5rem;">下肢内侧→喉</td><td style="padding:0.4rem 0.5rem;">维系诸阴经</td></tr>
-          </tbody>
-        </table>
-        <p style="margin-top:var(--space-sm);">奇经八脉就像身体的「水库」——十二正经是河流，奇经八脉是湖泊，丰水期蓄水、枯水期放水，调节全身气血。</p>
-      </div>
-
-      <!-- #6 实用穴位 -->
-      <div class="glass guide-card fade-in fade-in-delay-3">
-        <div class="guide-number">6</div>
-        <h3>实用穴位 · 修行人的随身药箱</h3>
-        <p>穴位不需要背几百个。掌握下面这 6 个，就够日常修行用了——</p>
-
-        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-sm);margin-top:var(--space-sm);">
-          <div class="glass" style="padding:var(--space-sm);border-radius:var(--radius-md);">
-            <div style="font-weight:600;color:var(--accent);margin-bottom:0.2rem;">🧘 丹田（气海）</div>
-            <div style="font-size:0.78rem;color:var(--text-tertiary);margin-bottom:0.3rem;">任脉 · 脐下 1.5 寸</div>
-            <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">全身气之根本。意守丹田是所有静坐的基础。</div>
-          </div>
-          <div class="glass" style="padding:var(--space-sm);border-radius:var(--radius-md);">
-            <div style="font-weight:600;color:var(--accent);margin-bottom:0.2rem;">👑 百会</div>
-            <div style="font-size:0.78rem;color:var(--text-tertiary);margin-bottom:0.3rem;">督脉 · 头顶正中</div>
-            <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">诸阳之会。轻轻拍打百会提神醒脑，意念贯顶。</div>
-          </div>
-          <div class="glass" style="padding:var(--space-sm);border-radius:var(--radius-md);">
-            <div style="font-weight:600;color:var(--accent);margin-bottom:0.2rem;">🔥 命门</div>
-            <div style="font-size:0.78rem;color:var(--text-tertiary);margin-bottom:0.3rem;">督脉 · 第二腰椎下</div>
-            <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">生命之门。腰酸、精力不足时温灸命门。</div>
-          </div>
-          <div class="glass" style="padding:var(--space-sm);border-radius:var(--radius-md);">
-            <div style="font-weight:600;color:var(--accent);margin-bottom:0.2rem;">✋ 劳宫</div>
-            <div style="font-size:0.78rem;color:var(--text-tertiary);margin-bottom:0.3rem;">心包经 · 掌心</div>
-            <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">握拳时中指指尖所对处。静坐时双掌相对，劳宫相照。</div>
-          </div>
-          <div class="glass" style="padding:var(--space-sm);border-radius:var(--radius-md);">
-            <div style="font-weight:600;color:var(--accent);margin-bottom:0.2rem;">🦶 涌泉</div>
-            <div style="font-size:0.78rem;color:var(--text-tertiary);margin-bottom:0.3rem;">肾经 · 脚底前 1/3 处</div>
-            <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">肾经起点。睡前搓热涌泉，引火归元，助眠安神。</div>
-          </div>
-          <div class="glass" style="padding:var(--space-sm);border-radius:var(--radius-md);">
-            <div style="font-weight:600;color:var(--accent);margin-bottom:0.2rem;">💓 膻中</div>
-            <div style="font-size:0.78rem;color:var(--text-tertiary);margin-bottom:0.3rem;">任脉 · 两乳之间</div>
-            <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">气会膻中。胸闷、情绪低落时轻揉膻中，开胸顺气。</div>
-          </div>
+      <!-- ============ ☯ 道家：修身 ============ -->
+      <div class="school-section">
+        <div class="school-header">
+          <div class="school-icon">☯</div>
+          <h2 class="school-title"><span class="gold-text">道修身</span></h2>
+          <p class="school-subtitle">道家的根基在「身」。身体是修道的炉鼎——身不安，无以修心。从站桩、吐纳、经络入手。</p>
         </div>
 
-        <div class="guide-tip" style="margin-top:var(--space-sm);">睡前 5 分钟：搓热双手劳宫穴 → 敷在双眼上（熨目）→ 搓热脚底涌泉 → 意守丹田入睡。</div>
+        <div class="glass guide-card fade-in">
+          <div class="guide-number">4</div>
+          <h3>任督二脉 · 小周天</h3>
+          <p><strong>任脉</strong>走身体前正中线，从会阴沿腹部、胸部到下颌。属阴，统管全身阴经，称为「阴脉之海」。</p>
+          <p><strong>督脉</strong>走身体后正中线，从会阴沿脊柱、后颈、头顶到上唇。属阳，统管全身阳经，称为「阳脉之海」。</p>
+          <p>两条脉在口唇处通过舌抵上腭相接，形成一个完整的环路——这就是<strong>「小周天」</strong>。</p>
+          <p>练小周天的方法：静坐时舌抵上腭（搭鹊桥），意守丹田。吸气时想象气从督脉上升到头顶，呼气时从任脉下降到丹田。循环往复。</p>
+          <div class="guide-tip">🧘 静坐时舌抵上腭，感受口腔中津液自然分泌——这就是「玉液还丹」的初级体验。</div>
+        </div>
+
+        <div class="glass guide-card fade-in fade-in-delay-1">
+          <div class="guide-number">5</div>
+          <h3>奇经八脉 · 人体能量网络</h3>
+          <p>人体有十二正经（对应五脏六腑）和<strong>奇经八脉</strong>。奇经八脉就像身体的「水库」——十二正经是河流，奇经八脉是湖泊，丰水期蓄水、枯水期放水。</p>
+          <table class="meridian-table">
+            <thead>
+              <tr><th>经脉</th><th>位置</th><th>功能</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>任脉</strong></td><td>前正中线</td><td>阴脉之海，主胞胎</td></tr>
+              <tr><td><strong>督脉</strong></td><td>后正中线</td><td>阳脉之海，主脑髓</td></tr>
+              <tr><td><strong>冲脉</strong></td><td>腹胸之内</td><td>十二经之海，主生殖</td></tr>
+              <tr><td><strong>带脉</strong></td><td>腰腹一周</td><td>约束诸经，如束带然</td></tr>
+              <tr><td><strong>阳跷脉</strong></td><td>下肢外侧</td><td>主肢体运动，司眼睑开合</td></tr>
+              <tr><td><strong>阴跷脉</strong></td><td>下肢内侧</td><td>主下肢运动</td></tr>
+              <tr><td><strong>阳维脉</strong></td><td>下肢外侧→肩</td><td>维系诸阳经</td></tr>
+              <tr><td><strong>阴维脉</strong></td><td>下肢内侧→喉</td><td>维系诸阴经</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="glass guide-card fade-in fade-in-delay-2">
+          <div class="guide-number">6</div>
+          <h3>实用穴位 · 修行人的随身药箱</h3>
+          <p>穴位不需要背几百个。掌握下面这 6 个，就够日常修行用了——</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-sm);margin-top:var(--space-sm);">
+            <div class="glass" style="padding:var(--space-sm);border-radius:var(--radius-md);">
+              <div style="font-weight:600;color:var(--accent);margin-bottom:0.2rem;">🧘 丹田（气海）</div>
+              <div style="font-size:0.78rem;color:var(--text-tertiary);margin-bottom:0.3rem;">任脉 · 脐下 1.5 寸</div>
+              <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">全身气之根本。意守丹田是所有静坐的基础。</div>
+            </div>
+            <div class="glass" style="padding:var(--space-sm);border-radius:var(--radius-md);">
+              <div style="font-weight:600;color:var(--accent);margin-bottom:0.2rem;">👑 百会</div>
+              <div style="font-size:0.78rem;color:var(--text-tertiary);margin-bottom:0.3rem;">督脉 · 头顶正中</div>
+              <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">诸阳之会。轻轻拍打百会提神醒脑，意念贯顶。</div>
+            </div>
+            <div class="glass" style="padding:var(--space-sm);border-radius:var(--radius-md);">
+              <div style="font-weight:600;color:var(--accent);margin-bottom:0.2rem;">🔥 命门</div>
+              <div style="font-size:0.78rem;color:var(--text-tertiary);margin-bottom:0.3rem;">督脉 · 第二腰椎下</div>
+              <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">生命之门。腰酸、精力不足时温灸命门。</div>
+            </div>
+            <div class="glass" style="padding:var(--space-sm);border-radius:var(--radius-md);">
+              <div style="font-weight:600;color:var(--accent);margin-bottom:0.2rem;">✋ 劳宫</div>
+              <div style="font-size:0.78rem;color:var(--text-tertiary);margin-bottom:0.3rem;">心包经 · 掌心</div>
+              <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">握拳时中指指尖所对处。静坐时双掌相对，劳宫相照。</div>
+            </div>
+            <div class="glass" style="padding:var(--space-sm);border-radius:var(--radius-md);">
+              <div style="font-weight:600;color:var(--accent);margin-bottom:0.2rem;">🦶 涌泉</div>
+              <div style="font-size:0.78rem;color:var(--text-tertiary);margin-bottom:0.3rem;">肾经 · 脚底前 1/3 处</div>
+              <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">肾经起点。睡前搓热涌泉，引火归元，助眠安神。</div>
+            </div>
+            <div class="glass" style="padding:var(--space-sm);border-radius:var(--radius-md);">
+              <div style="font-weight:600;color:var(--accent);margin-bottom:0.2rem;">💓 膻中</div>
+              <div style="font-size:0.78rem;color:var(--text-tertiary);margin-bottom:0.3rem;">任脉 · 两乳之间</div>
+              <div style="font-size:0.82rem;color:var(--text-secondary);line-height:1.6;">气会膻中。胸闷、情绪低落时轻揉膻中，开胸顺气。</div>
+            </div>
+          </div>
+          <div class="guide-tip" style="margin-top:var(--space-sm);">🌙 睡前 5 分钟：搓热双手劳宫 → 敷在双眼上（熨目）→ 搓热脚底涌泉 → 意守丹田入睡。</div>
+        </div>
+
+        <!-- Placeholder: 道家功法 (Phase 3) -->
+        <div class="placeholder-card fade-in">
+          <div class="icon">🏗️</div>
+          <h3>道家功法 · 扩充中</h3>
+          <p>八段锦文字导引 · 站桩入门 · 吐纳法<br>将在第三阶段「精进」中陆续补充。</p>
+        </div>
       </div>
 
+      <!-- ============ 📜 分隔 ============ -->
+      <div class="section-divider"><span></span><span class="icon">📜</span><span></span></div>
+
+      <!-- ============ 📜 儒家：修世 ============ -->
+      <div class="school-section">
+        <div class="school-header">
+          <div class="school-icon">📜</div>
+          <h2 class="school-title"><span class="gold-text">儒修世</span></h2>
+          <p class="school-subtitle">儒家的功夫在「世」。修行不是避世——是在人际关系、日常工作、一言一行中修身。修身即修世。</p>
+        </div>
+
+        <!-- Placeholder: 儒家世法 (Phase 3) -->
+        <div class="placeholder-card fade-in">
+          <div class="icon">🏗️</div>
+          <h3>儒家世法 · 扩充中</h3>
+          <p>三省吾身 · 慎独功夫 · 礼乐修身<br>将在第三阶段「精进」中陆续补充。</p>
+        </div>
+      </div>
+
+      <!-- ============ 结语 ============ -->
       <div class="glass guide-card fade-in fade-in-delay-3" style="text-align:center;padding:var(--space-lg) var(--space-md);">
         <p style="font-family:'Noto Serif SC',serif;font-size:1.1rem;color:var(--text-primary);margin-bottom:var(--space-sm);">
           修行不是要成为什么人。<br>修行只是回到你本来的样子。
         </p>
         <p style="font-size:0.85rem;color:var(--text-tertiary);">
-          不需要完美。开始，就已经足够了。
+          三条路，一个方向。选一条开始走，或者都试试看。<br>不需要完美。开始，就已经足够了。
         </p>
         <br>
         <a href="experience.html" class="btn btn-glass">听听同行者的声音 →</a>
+        <a href="timer.html" class="btn btn-glass" style="margin-left:.5rem;">打开实修计时器 →</a>
       </div>
 
     </div>
@@ -231,7 +263,9 @@
         <div class="footer-links">
           <a href="yuedu.html">阅读室</a>
           <a href="riqian.html">日签</a>
+          <a href="timer.html">实修</a>
           <a href="rumen.html">入门</a>
+          <a href="experience.html">心语</a>
           <a href="about.html">关于</a>
           <a href="https://github.com/1332505739/jingjie" target="_blank">GitHub</a>
         </div>

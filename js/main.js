@@ -9,7 +9,8 @@
 (function(){
   var NAV=[
     {href:'index.html',label:'首页'},{href:'yuedu.html',label:'阅读室'},
-    {href:'riqian.html',label:'日签'},{href:'videos.html',label:'影音'},
+    {href:'riqian.html',label:'日签'},{href:'timer.html',label:'实修'},
+    {href:'diary.html',label:'日记'},{href:'videos.html',label:'影音'},
     {href:'rumen.html',label:'入门'},{href:'experience.html',label:'心语'},
     {href:'about.html',label:'关于'}
   ];

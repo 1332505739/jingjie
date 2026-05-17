@@ -1732,3 +1732,64 @@ a:not(.btn):not(.navbar-logo):not(.navbar-links a):hover {
     padding: 0.3rem 0.4rem;
   }
 }
+
+/* ==========================================
+   prefers-reduced-motion — 全站动画降级
+   尊重用户系统偏好，关闭所有非必要动效
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  /* Disable orbital float */
+  .background-canvas .orb {
+    animation: none !important;
+  }
+
+  /* Remove parallax/transform hovers */
+  .glass:hover,
+  .card:hover,
+  .btn:hover,
+  a:hover {
+    transform: none !important;
+  }
+
+  /* Disable scroll reveal — show everything immediately */
+  .fade-in {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+  }
+
+  /* Disable reading progress bar animation */
+  .reading-progress {
+    transition: none !important;
+  }
+
+  /* Disable nav hidden animation */
+  .navbar.nav-hidden {
+    transform: none !important;
+    transition: none !important;
+  }
+
+  /* Disable timer circle glow */
+  .timer-circle.finished {
+    animation: none !important;
+  }
+
+  /* Disable ripple effect */
+  .btn-primary::after,
+  .btn-glass::after {
+    display: none !important;
+  }
+
+  /* Keep link underlines for better accessibility */
+  a:not(.navbar-logo):not(.btn) {
+    text-decoration: underline;
+  }
+}

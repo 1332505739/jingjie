@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>修行日记 · 静界</title>
+  <meta name="description" content="静界修行日记 — 记录每一次修行的心得与体悟。逐日打卡，月度回顾。">
+  <meta property="og:title" content="修行日记 · 静界">
+  <meta property="og:description" content="记录每一次打坐、站桩、省身。写下来，才真正属于自己的。">
+  <meta property="og:url" content="https://1332505739.github.io/jingjie/diary">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="静界">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="修行日记 · 静界">
+  <meta name="twitter:description" content="记录每一次修行。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="canonical" href="https://1332505739.github.io/jingjie/diary">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☽</text></svg>">
+  <style>
+    .diary-layout { display:grid; grid-template-columns:1fr 320px; gap:var(--space-lg); align-items:start; }
+    .diary-stats { display:flex; gap:var(--space-sm); margin-bottom:var(--space-lg); flex-wrap:wrap; }
+    .diary-stat { flex:1; min-width:100px; padding:var(--space-sm); border-radius:var(--radius-md); background:var(--glass-bg); backdrop-filter:blur(12px); border:1px solid var(--glass-border); text-align:center; }
+    .diary-stat-value { font-size:1.4rem; font-weight:700; color:var(--gold); }
+    .diary-stat-label { font-size:.75rem; color:var(--text-tertiary); margin-top:.2rem; }
+    .diary-entry { padding:var(--space-md); border-radius:var(--radius-md); background:var(--glass-bg); backdrop-filter:blur(12px); border:1px solid var(--glass-border); margin-bottom:var(--space-sm); }
+    .diary-entry-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:.5rem; }
+    .diary-entry-date { font-size:.8rem; color:var(--text-tertiary); }
+    .diary-entry-mode { font-size:.75rem; padding:.15rem .5rem; border-radius:100px; background:rgba(212,175,55,.15); color:var(--gold); }
+    .diary-entry-body { color:var(--text-secondary); line-height:1.7; font-size:.9rem; }
+    .diary-entry-mood { font-size:1rem; margin-right:.3rem; }
+    .diary-form { padding:var(--space-md); border-radius:var(--radius-md); background:var(--glass-bg); backdrop-filter:blur(12px); border:1px solid var(--glass-border); margin-bottom:var(--space-lg); }
+    .diary-form textarea { width:100%; min-height:100px; padding:var(--space-sm); border-radius:var(--radius-sm); border:1px solid var(--glass-border); background:var(--bg-primary); color:var(--text-primary); font-family:inherit; font-size:.9rem; resize:vertical; }
+    .diary-form textarea:focus { outline:none; border-color:var(--gold); }
+    .diary-form-row { display:flex; gap:var(--space-sm); align-items:center; margin-bottom:var(--space-sm); flex-wrap:wrap; }
+    .mood-btns { display:flex; gap:.25rem; }
+    .mood-btn { padding:.3rem .5rem; border-radius:100px; border:1px solid var(--glass-border); background:var(--glass-bg); cursor:pointer; font-size:1.1rem; transition:all .2s; }
+    .mood-btn:hover { border-color:var(--gold); }
+    .mood-btn.active { border-color:var(--gold); background:rgba(212,175,55,.12); }
+    .month-nav { display:flex; align-items:center; justify-content:center; gap:var(--space-md); margin-bottom:var(--space-sm); }
+    .month-nav .month-title { font-family:'Noto Serif SC',serif; font-size:1.1rem; color:var(--text-primary); min-width:8rem; text-align:center; }
+    .calendar-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:3px; margin-bottom:var(--space-md); }
+    .calendar-day-header { text-align:center; font-size:.7rem; color:var(--text-tertiary); padding:.3rem 0; }
+    .calendar-day { aspect-ratio:1; display:flex; align-items:center; justify-content:center; border-radius:50%; font-size:.75rem; cursor:pointer; color:var(--text-secondary); position:relative; transition:all .2s; }
+    .calendar-day:hover { background:rgba(212,175,55,.1); }
+    .calendar-day.today { font-weight:700; color:var(--gold); border:1px solid var(--gold); }
+    .calendar-day.has-entry { background:rgba(212,175,55,.12); color:var(--gold); }
+    .calendar-day.has-session::after { content:''; position:absolute; bottom:2px; width:4px; height:4px; border-radius:50%; background:var(--gold); }
+    .calendar-day.empty { visibility:hidden; }
+    .diary-sidecard { padding:var(--space-md); border-radius:var(--radius-md); background:var(--glass-bg); backdrop-filter:blur(12px); border:1px solid var(--glass-border); margin-bottom:var(--space-sm); }
+    .diary-sidecard h3 { font-size:.9rem; color:var(--text-secondary); margin-bottom:.5rem; }
+    .diary-sidecard .breakdown-item { display:flex; justify-content:space-between; padding:.3rem 0; font-size:.85rem; color:var(--text-secondary); border-bottom:1px solid var(--glass-border); }
+    .diary-sidecard .breakdown-item:last-child { border-bottom:none; }
+    @media (max-width:768px) {
+      .diary-layout { grid-template-columns:1fr; }
+      .diary-stats { gap:.5rem; }
+      .diary-stat { min-width:80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-canvas">
+    <div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <span class="logo-icon">☽</span>
+        <span class="gold-text">静界</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="切换主题" title="切换亮色/暗色">☀</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="菜单">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="yuedu.html">阅读室</a></li>
+        <li><a href="riqian.html">日签</a></li>
+        <li><a href="timer.html">实修</a></li>
+        <li><a href="diary.html" class="active">日记</a></li>
+        <li><a href="experience.html">心语</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <div class="hero-badge" style="display:inline-block;margin-bottom:1rem;">✦ 修行日记</div>
+      <h1 class="section-title">
+        <span class="chinese-title gold-text">记则铭心</span>
+      </h1>
+      <p class="section-subtitle" style="margin:1rem auto 0;">
+        写下来，才真正属于自己。<br>
+        每一次打坐、每一段读经、每一个体会——都是你的修行路。
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="diary-layout">
+
+        <!-- Left column: entries -->
+        <div>
+          <!-- Stats row -->
+          <div class="diary-stats" id="diaryStats">
+            <div class="diary-stat">
+              <div class="diary-stat-value" id="statStreak">0</div>
+              <div class="diary-stat-label">连续天数</div>
+            </div>
+            <div class="diary-stat">
+              <div class="diary-stat-value" id="statSessions">0</div>
+              <div class="diary-stat-label">本月实修</div>
+            </div>
+            <div class="diary-stat">
+              <div class="diary-stat-value" id="statMinutes">0</div>
+              <div class="diary-stat-label">本月分钟</div>
+            </div>
+            <div class="diary-stat">
+              <div class="diary-stat-value" id="statEntries">0</div>
+              <div class="diary-stat-label">日记篇数</div>
+            </div>
+          </div>
+
+          <!-- Write entry form -->
+          <div class="diary-form">
+            <h3 style="font-size:.95rem;color:var(--text-primary);margin-bottom:var(--space-sm);">今日修行</h3>
+            <div class="diary-form-row">
+              <span style="font-size:.85rem;color:var(--text-secondary);">心境：</span>
+              <div class="mood-btns" id="moodBtns">
+                <button class="mood-btn active" data-mood="😌" title="平静">😌</button>
+                <button class="mood-btn" data-mood="😊" title="愉悦">😊</button>
+                <button class="mood-btn" data-mood="🤔" title="思考">🤔</button>
+                <button class="mood-btn" data-mood="😤" title="挣扎">😤</button>
+                <button class="mood-btn" data-mood="😶" title="空灵">😶</button>
+              </div>
+            </div>
+            <textarea id="entryText" placeholder="写下今天的修行心得…（比如：打坐时的感受、读经的体会、今天做了几次 4-4-4-4 呼吸…）"></textarea>
+            <div style="display:flex;justify-content:flex-end;margin-top:var(--space-sm);">
+              <button class="btn btn-sm btn-primary" id="btnSaveEntry" style="border-radius:100px;">保存心得</button>
+            </div>
+          </div>
+
+          <!-- Entries list -->
+          <div id="entriesList"></div>
+        </div>
+
+        <!-- Right column: calendar + review -->
+        <div>
+          <!-- Monthly review -->
+          <div class="diary-sidecard">
+            <h3>📊 本月回顾</h3>
+            <div id="monthlyBreakdown">
+              <p style="font-size:.85rem;color:var(--text-tertiary);">暂无数据</p>
+            </div>
+          </div>
+
+          <!-- Calendar -->
+          <div class="diary-sidecard">
+            <div class="month-nav">
+              <button class="btn btn-glass btn-sm" id="btnPrevMonth">←</button>
+              <span class="month-title" id="monthTitle"></span>
+              <button class="btn btn-glass btn-sm" id="btnNextMonth">→</button>
+            </div>
+            <div class="calendar-grid" id="calendarDays">
+              <div class="calendar-day-header">日</div>
+              <div class="calendar-day-header">一</div>
+              <div class="calendar-day-header">二</div>
+              <div class="calendar-day-header">三</div>
+              <div class="calendar-day-header">四</div>
+              <div class="calendar-day-header">五</div>
+              <div class="calendar-day-header">六</div>
+            </div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand"><span class="gold-text">静界</span> · Realm of Stillness</div>
+          <div class="footer-text" style="margin-top:0.3rem;">年轻修行人的精神角落</div>
+        </div>
+        <div class="footer-links">
+          <a href="yuedu.html">阅读室</a>
+          <a href="riqian.html">日签</a>
+          <a href="timer.html">实修</a>
+          <a href="diary.html">日记</a>
+          <a href="experience.html">心语</a>
+          <a href="about.html">关于</a>
+          <a href="https://github.com/1332505739/jingjie" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/diary.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
