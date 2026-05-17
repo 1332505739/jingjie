@@ -327,7 +327,6 @@ document.addEventListener('DOMContentLoaded', () => {
     var saved = JSON.parse(localStorage.getItem('jingjie-reading-settings'));
     if (saved) settings = saved;
   } catch(e) {}
-  var readerContent = document.getElementById('readerContent');
 
   function applySettings() {
     if (!readerContent) return;
