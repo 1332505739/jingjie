@@ -52,6 +52,7 @@
     });
     saveEntries(entries);
     $('entryText').value = '';
+    if (window.a11yAnnounce) window.a11yAnnounce('心得已保存');
     renderAll();
   });
 

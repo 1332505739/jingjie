@@ -4,14 +4,50 @@
    ============================================ */
 
 // ==========================================
-// 0. Nav & Footer — centralized
+// 0. Accessibility: skip-link + announcer
+// ==========================================
+(function(){
+  // Skip-to-content link
+  var skip = document.createElement('a');
+  skip.href = '#main-content';
+  skip.className = 'skip-link';
+  skip.textContent = '跳到主要内容';
+  document.body.insertBefore(skip, document.body.firstChild);
+
+  // aria-live announcer
+  var announcer = document.createElement('div');
+  announcer.id = 'a11y-announcer';
+  announcer.setAttribute('aria-live', 'polite');
+  announcer.setAttribute('aria-atomic', 'true');
+  document.body.appendChild(announcer);
+
+  // Global announce helper
+  window.a11yAnnounce = function(msg) {
+    announcer.textContent = '';
+    requestAnimationFrame(function() {
+      announcer.textContent = msg;
+      announcer.classList.add('active');
+      clearTimeout(window._announceTimeout);
+      window._announceTimeout = setTimeout(function() {
+        announcer.classList.remove('active');
+      }, 3000);
+    });
+  };
+
+  // Add main-content id to first <main> or first <section> as fallback
+  var main = document.querySelector('main') || document.querySelector('section');
+  if (main && !main.id) main.id = 'main-content';
+})();
+
+// ==========================================
+// 1. Nav & Footer — centralized
 // ==========================================
 (function(){
   var NAV=[
     {href:'index.html',label:'首页'},{href:'yuedu.html',label:'阅读室'},
     {href:'riqian.html',label:'日签'},{href:'timer.html',label:'实修'},
-    {href:'diary.html',label:'日记'},{href:'videos.html',label:'影音'},
-    {href:'rumen.html',label:'入门'},{href:'experience.html',label:'心语'},
+    {href:'diary.html',label:'日记'},{href:'path.html',label:'路径'},
+    {href:'videos.html',label:'影音'},{href:'rumen.html',label:'入门'},{href:'experience.html',label:'心语'},
     {href:'about.html',label:'关于'}
   ];
   var FOOTER=[
@@ -242,3 +278,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 })();
+
+// ==========================================
+// 7. Service Worker — PWA offline support
+// ==========================================
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/jingjie/sw.js', { scope: '/jingjie/' }).then(function(reg) {
+      console.log('SW registered:', reg.scope);
+    }).catch(function(err) {
+      console.log('SW registration failed:', err);
+    });
+  });
+}

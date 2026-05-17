@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <rect width="512" height="512" rx="96" fill="#0a0a1a"/>
+  <circle cx="256" cy="180" r="90" fill="none" stroke="#d4af37" stroke-width="8"/>
+  <circle cx="256" cy="180" r="40" fill="#d4af37" opacity=".15"/>
+  <path d="M166 270 A130 100 0 0 0 346 270" fill="none" stroke="#d4af37" stroke-width="6"/>
+  <text x="256" y="380" text-anchor="middle" font-family="serif" font-size="80" fill="#d4af37">静</text>
+</svg>

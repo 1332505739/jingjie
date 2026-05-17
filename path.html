@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>修行路径 · 静界</title>
+  <meta name="description" content="静界修行路径图 — 21天入门，三教专项进阶。找一个方向，走下去。">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d4af37">
+  <link rel="canonical" href="https://1332505739.github.io/jingjie/path">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☽</text></svg>">
+  <style>
+    .path-intro { text-align:center; max-width:600px; margin:0 auto var(--space-xl); }
+    .path-phase { margin-bottom:var(--space-xl); }
+    .path-phase-title { text-align:center; margin-bottom:var(--space-md); }
+    .path-phase-title h3 { font-family:'Noto Serif SC',serif; font-size:1.3rem; color:var(--gold); }
+    .path-phase-title p { font-size:.85rem; color:var(--text-tertiary); margin-top:.3rem; }
+    .path-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:var(--space-sm); }
+    .path-day { padding:var(--space-md); border-radius:var(--radius-md); background:var(--glass-bg); backdrop-filter:blur(12px); border:1px solid var(--glass-border); position:relative; overflow:hidden; transition:all .2s; }
+    .path-day:hover { border-color:var(--gold); }
+    .path-day-num { font-size:.75rem; color:var(--gold); font-weight:600; margin-bottom:.3rem; opacity:.7; }
+    .path-day-title { font-size:.95rem; color:var(--text-primary); margin-bottom:.4rem; font-weight:600; }
+    .path-day-desc { font-size:.82rem; color:var(--text-secondary); line-height:1.6; }
+    .path-day-action { display:inline-block; margin-top:.5rem; font-size:.78rem; color:var(--gold); }
+    .path-day-tag { position:absolute; top:.5rem; right:.5rem; font-size:.7rem; padding:.15rem .5rem; border-radius:100px; }
+    .tag-buddhist { background:rgba(180,130,50,.15); color:#b48232; }
+    .tag-daoist { background:rgba(80,140,120,.15); color:#508c78; }
+    .tag-confucian { background:rgba(140,100,120,.15); color:#8c6478; }
+    .path-specialize { margin-top:var(--space-xl); }
+    .path-spec-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--space-md); margin-top:var(--space-md); }
+    .path-spec-card { padding:var(--space-lg); border-radius:var(--radius-lg); background:var(--glass-bg); backdrop-filter:blur(16px); border:1px solid var(--glass-border); text-align:center; transition:all .3s; }
+    .path-spec-card:hover { transform:translateY(-2px); border-color:var(--gold); }
+    .path-spec-icon { font-size:2.5rem; margin-bottom:var(--space-sm); }
+    .path-spec-title { font-family:'Noto Serif SC',serif; font-size:1.15rem; margin-bottom:.3rem; }
+    .path-spec-subtitle { font-size:.8rem; color:var(--text-tertiary); margin-bottom:var(--space-sm); }
+    .path-spec-list { text-align:left; font-size:.82rem; color:var(--text-secondary); line-height:1.8; }
+    @media (max-width:768px) {
+      .path-spec-grid { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="background-canvas">
+    <div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div>
+  </div>
+
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="index.html" class="navbar-logo">
+        <span class="logo-icon">☽</span>
+        <span class="gold-text">静界</span>
+      </a>
+      <button class="theme-toggle" id="themeToggle" aria-label="切换主题">☀</button>
+      <button class="menu-toggle" id="menuToggle" aria-label="菜单"><span></span><span></span><span></span></button>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="index.html">首页</a></li>
+        <li><a href="yuedu.html">阅读室</a></li>
+        <li><a href="riqian.html">日签</a></li>
+        <li><a href="timer.html">实修</a></li>
+        <li><a href="diary.html">日记</a></li>
+        <li><a href="path.html" class="active">路径</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <div class="container">
+      <div class="hero-badge" style="display:inline-block;margin-bottom:1rem;">✦ 修行路径</div>
+      <h1 class="section-title"><span class="chinese-title gold-text">一步一印</span></h1>
+      <p class="section-subtitle" style="margin:1rem auto 0;">
+        21天，一个习惯的种子。<br>
+        选一条路，走下去——不在乎快慢，在乎方向。
+      </p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container" style="max-width:860px;">
+
+      <div class="path-intro">
+        <p style="color:var(--text-secondary);line-height:1.8;">
+          修行不需要完美的开始。下面的 21 天路线，每天只需 10-15 分钟。<br>
+          完成之后，你可以选择一条专项路径深入。
+        </p>
+      </div>
+
+      <!-- Week 1: 入门 -->
+      <div class="path-phase">
+        <div class="path-phase-title">
+          <h3>第一周 · 入门</h3>
+          <p>建立基本习惯，感受三家</p>
+        </div>
+        <div class="path-grid">
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-buddhist">禅坐</span>
+            <div class="path-day-num">第 1 天</div>
+            <div class="path-day-title">坐 5 分钟</div>
+            <div class="path-day-desc">找安静处坐下，闭眼观息 5 分钟。杂念来了就回来。5 分钟，只要 5 分钟。</div>
+            <a href="timer.html" class="path-day-action">打开计时器 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-daoist">呼吸</span>
+            <div class="path-day-num">第 2 天</div>
+            <div class="path-day-title">4-4-4-4 方框呼吸</div>
+            <div class="path-day-desc">吸气4秒·屏息4秒·呼气4秒·屏息4秒。循环5次。感受身体的平静。</div>
+            <a href="timer.html" class="path-day-action">打开计时器 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-confucian">省身</span>
+            <div class="path-day-num">第 3 天</div>
+            <div class="path-day-title">今日三省</div>
+            <div class="path-day-desc">睡前 5 分钟，回想今天：对人有不诚吗？有言行过失吗？有可改进之处吗？</div>
+            <a href="diary.html" class="path-day-action">写下来 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-buddhist">读经</span>
+            <div class="path-day-num">第 4 天</div>
+            <div class="path-day-title">读一段经文</div>
+            <div class="path-day-desc">打开阅读室，读诵金刚经第一品到第四品。不求解，只感受。</div>
+            <a href="yuedu.html" class="path-day-action">去阅读室 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-daoist">站桩</span>
+            <div class="path-day-num">第 5 天</div>
+            <div class="path-day-title">站 5 分钟</div>
+            <div class="path-day-desc">双脚与肩同宽，微微屈膝，双手抱球于腹前。像一棵树一样站着。</div>
+            <a href="timer.html" class="path-day-action">打开计时器 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-buddhist">正念</span>
+            <div class="path-day-num">第 6 天</div>
+            <div class="path-day-title">正念一件事</div>
+            <div class="path-day-desc">今天选一件日常事（刷牙、泡茶、走路），全程保持觉知。只是知道。</div>
+            <a href="rumen.html" class="path-day-action">看入门指南 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-confucian">读经</span>
+            <div class="path-day-num">第 7 天</div>
+            <div class="path-day-title">读论语一章</div>
+            <div class="path-day-desc">打开阅读室，读诵论语「学而第一」。感受夫子之道，日常即修行。</div>
+            <a href="yuedu.html" class="path-day-action">去阅读室 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 2: 深入 -->
+      <div class="path-phase">
+        <div class="path-phase-title">
+          <h3>第二周 · 深入</h3>
+          <p>稍微延长，开始感受变化</p>
+        </div>
+        <div class="path-grid">
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-buddhist">禅坐</span>
+            <div class="path-day-num">第 8 天</div>
+            <div class="path-day-title">坐 10 分钟</div>
+            <div class="path-day-desc">今天加长时间。10 分钟。中间可能有烦躁——这就是练习。不抗拒。</div>
+            <a href="timer.html" class="path-day-action">打开计时器 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-daoist">读经</span>
+            <div class="path-day-num">第 9 天</div>
+            <div class="path-day-title">读道德经</div>
+            <div class="path-day-desc">读道德经前五章。老子的话不急不缓，像一杯放了很久的水。</div>
+            <a href="yuedu.html" class="path-day-action">去阅读室 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-confucian">慎独</span>
+            <div class="path-day-num">第 10 天</div>
+            <div class="path-day-title">慎独 10 分钟</div>
+            <div class="path-day-desc">一个人独处 10 分钟。不做任何事。看自己会冒出什么念头。不评判。</div>
+            <a href="timer.html" class="path-day-action">打开计时器 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-buddhist">读经</span>
+            <div class="path-day-num">第 11 天</div>
+            <div class="path-day-title">读金刚经中段</div>
+            <div class="path-day-desc">读金刚经第五品到第十品。注意「应无所住而生其心」一句。</div>
+            <a href="yuedu.html" class="path-day-action">去阅读室 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-daoist">站桩</span>
+            <div class="path-day-num">第 12 天</div>
+            <div class="path-day-title">站桩 8 分钟</div>
+            <div class="path-day-desc">今天加长到 8 分钟。注意重心在脚底。古人说「站如松」是真的能站出功夫。</div>
+            <a href="timer.html" class="path-day-action">打开计时器 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-buddhist">正念</span>
+            <div class="path-day-num">第 13 天</div>
+            <div class="path-day-title">正念一餐饭</div>
+            <div class="path-day-desc">今天一餐完整地吃。不看手机，不看书。就吃饭。嚼每一口。</div>
+            <a href="rumen.html" class="path-day-action">看入门指南 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-daoist">读经</span>
+            <div class="path-day-num">第 14 天</div>
+            <div class="path-day-title">读庄子逍遥游</div>
+            <div class="path-day-desc">读庄子内篇逍遥游。「北冥有鱼……」感受那种不被任何东西束缚的自由。</div>
+            <a href="yuedu.html" class="path-day-action">去阅读室 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Week 3: 习惯 -->
+      <div class="path-phase">
+        <div class="path-phase-title">
+          <h3>第三周 · 习惯</h3>
+          <p>融三家于日常，建立节奏</p>
+        </div>
+        <div class="path-grid">
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-buddhist">禅坐</span>
+            <div class="path-day-num">第 15 天</div>
+            <div class="path-day-title">坐 15 分钟</div>
+            <div class="path-day-desc">今天挑战 15 分钟。如果太难受可以 10 分钟。不要比拼，只是和自己相处。</div>
+            <a href="timer.html" class="path-day-action">打开计时器 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-confucian">读经</span>
+            <div class="path-day-num">第 16 天</div>
+            <div class="path-day-title">读大学开篇</div>
+            <div class="path-day-desc">读大学·三纲领。「明明德、亲民、止于至善」——儒者的三部曲。</div>
+            <a href="yuedu.html" class="path-day-action">去阅读室 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-daoist">站桩</span>
+            <div class="path-day-num">第 17 天</div>
+            <div class="path-day-title">站桩 + 吐纳</div>
+            <div class="path-day-desc">站桩 5 分钟 + 腹式呼吸 3 分钟。感受气沉丹田的感觉。</div>
+            <a href="timer.html" class="path-day-action">打开计时器 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-buddhist">放下</span>
+            <div class="path-day-num">第 18 天</div>
+            <div class="path-day-title">今天什么都不做</div>
+            <div class="path-day-desc">对。什么都不做。不打坐、不读经、不站桩。看看自己是否因此不安。</div>
+            <a href="diary.html" class="path-day-action">写下感受 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-daoist">读经</span>
+            <div class="path-day-num">第 19 天</div>
+            <div class="path-day-title">读阴符经</div>
+            <div class="path-day-desc">读阴符经。「观天之道，执天之行，尽矣。」300 字里藏着大智慧。</div>
+            <a href="yuedu.html" class="path-day-action">去阅读室 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-confucian">读经</span>
+            <div class="path-day-num">第 20 天</div>
+            <div class="path-day-title">读中庸首章</div>
+            <div class="path-day-desc">读中庸首章。「天命之谓性，率性之谓道。」找到你最真实的样子。</div>
+            <a href="yuedu.html" class="path-day-action">去阅读室 →</a>
+          </div>
+          <div class="path-day fade-in">
+            <span class="path-day-tag tag-buddhist">回顾</span>
+            <div class="path-day-num">第 21 天</div>
+            <div class="path-day-title">21 天回顾</div>
+            <div class="path-day-desc">回头看看这三周。你有什么变化？不需要大悟——有些变化你甚至还没察觉。</div>
+            <a href="diary.html" class="path-day-action">写回顾日记 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 专项进阶 -->
+      <div class="path-specialize">
+        <div class="path-phase-title">
+          <h3>完成 21 天后 · 选择专项路径</h3>
+          <p>三选一，按兴趣深入。也可以三条路都试试——不冲突。</p>
+        </div>
+        <div class="path-spec-grid">
+          <div class="path-spec-card fade-in">
+            <div class="path-spec-icon">☸</div>
+            <div class="path-spec-title"><span class="gold-text">佛家专项</span></div>
+            <div class="path-spec-subtitle">修心 · 向内看</div>
+            <div class="path-spec-list">
+              ◇ 每日禅坐 20-30 分钟<br>
+              ◇ 诵金刚经/心经<br>
+              ◇ 正念融入日常<br>
+              ◇ 周末行禅（静走）<br>
+              ◇ 记修行日记
+            </div>
+            <br><a href="timer.html" class="btn btn-sm btn-glass">开始禅坐 →</a>
+          </div>
+          <div class="path-spec-card fade-in fade-in-delay-1">
+            <div class="path-spec-icon">☯</div>
+            <div class="path-spec-title"><span class="gold-text">道家专项</span></div>
+            <div class="path-spec-subtitle">修身 · 以身为炉鼎</div>
+            <div class="path-spec-list">
+              ◇ 每日站桩 15-20 分钟<br>
+              ◇ 八段锦（8 式）<br>
+              ◇ 腹式吐纳练习<br>
+              ◇ 读道德经/庄子<br>
+              ◇ 意守丹田
+            </div>
+            <br><a href="timer.html" class="btn btn-sm btn-glass">开始站桩 →</a>
+          </div>
+          <div class="path-spec-card fade-in fade-in-delay-2">
+            <div class="path-spec-icon">📜</div>
+            <div class="path-spec-title"><span class="gold-text">儒家专项</span></div>
+            <div class="path-spec-subtitle">修世 · 在关系中修身</div>
+            <div class="path-spec-list">
+              ◇ 每日三省吾身<br>
+              ◇ 慎独 15 分钟<br>
+              ◇ 读论语/大学/中庸<br>
+              ◇ 践行「己所不欲勿施于人」<br>
+              ◇ 周记反思
+            </div>
+            <br><a href="timer.html" class="btn btn-sm btn-glass">开始省身 →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand"><span class="gold-text">静界</span> · Realm of Stillness</div>
+          <div class="footer-text" style="margin-top:0.3rem;">年轻修行人的精神角落</div>
+        </div>
+        <div class="footer-links">
+          <a href="yuedu.html">阅读室</a><a href="riqian.html">日签</a>
+          <a href="timer.html">实修</a><a href="diary.html">日记</a>
+          <a href="path.html">路径</a><a href="experience.html">心语</a>
+          <a href="about.html">关于</a>
+          <a href="https://github.com/1332505739/jingjie" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

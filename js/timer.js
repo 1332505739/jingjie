@@ -248,6 +248,7 @@
     playTempleBell(ensureAudio(), 0.3, 1);
     saveSession();
     showSummary();
+    if (window.a11yAnnounce) window.a11yAnnounce('修行完成。' + Math.floor(state.totalSeconds / 60) + '分钟');
   }
 
   function reset() {

@@ -16,6 +16,8 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="三家经典 · 静界阅读室">
   <meta name="twitter:description" content="佛、道、儒三家经典，沉浸式阅读。">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#d4af37">
   <link rel="canonical" href="https://1332505739.github.io/jingjie/yuedu">
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☽</text></svg>">
@@ -43,6 +45,20 @@
     @media (max-width:768px) {
       .reader-settings { flex-direction:column; align-items:center; gap:var(--space-sm); }
     }
+    /* Immersive reading overlay */
+    .immersive-overlay { position:fixed; inset:0; z-index:9999; background:#0a0a1a; display:none; flex-direction:column; align-items:center; overflow-y:auto; }
+    .immersive-overlay.active { display:flex; }
+    .immersive-topbar { position:sticky; top:0; width:100%; padding:var(--space-sm) var(--space-md); display:flex; justify-content:space-between; align-items:center; background:linear-gradient(180deg, #0a0a1a 60%, transparent); z-index:10; opacity:0; transition:opacity .3s; }
+    .immersive-overlay:hover .immersive-topbar, .immersive-topbar.visible { opacity:1; }
+    .immersive-close { background:none; border:1px solid var(--glass-border); color:var(--text-secondary); font-size:.85rem; padding:.3rem .8rem; border-radius:100px; cursor:pointer; transition:all .2s; font-family:inherit; }
+    .immersive-close:hover { border-color:var(--gold); color:var(--gold); }
+    .immersive-timer { font-size:.8rem; color:var(--text-tertiary); font-variant-numeric:tabular-nums; }
+    .immersive-content { max-width:600px; width:100%; padding:4rem var(--space-md) 6rem; font-family:'Noto Serif SC',serif; font-size:1.1rem; line-height:2.1; color:#c8b89a; }
+    .immersive-content .im-chapter { font-size:.85rem; color:#d4af37; margin-bottom:.3rem; opacity:.7; }
+    .immersive-content .im-body p { margin-bottom:1.8em; position:relative; }
+    .immersive-content .breath-pause { text-align:center; font-size:.8rem; color:rgba(212,175,55,.3); margin:2em 0; user-select:none; }
+    .immersive-content .breath-pause::before { content:'· 深吸一口气 ·'; display:block; animation:pause-breathe 4s ease-in-out infinite; }
+    @keyframes pause-breathe { 0%,100%{opacity:.2} 50%{opacity:.6} }
   </style>
 </head>
 <body>
@@ -99,6 +115,7 @@
           <button class="btn btn-glass btn-sm" id="btnNext" disabled>下一章</button>
         </div>
         <button class="btn btn-glass btn-sm" id="btnSettings" title="阅读设置" aria-label="阅读设置">⚙</button>
+        <button class="btn btn-glass btn-sm" id="btnImmersive" title="空谷沉浸" aria-label="沉浸阅读">🌑</button>
       </div>
 
       <!-- Reading settings panel -->
@@ -169,6 +186,15 @@
       </div>
     </div>
   </footer>
+
+  <!-- Immersive reading overlay -->
+  <div class="immersive-overlay" id="immersiveOverlay" aria-hidden="true">
+    <div class="immersive-topbar" id="immersiveTopbar">
+      <span class="immersive-timer" id="immersiveTimer">00:00</span>
+      <button class="immersive-close" id="btnImmersiveClose">✕ 退出沉浸</button>
+    </div>
+    <div class="immersive-content" id="immersiveContent"></div>
+  </div>
 
   <script src="js/yuedu-data.js"></script>
   <script src="js/yuedu-data-confucian.js"></script>

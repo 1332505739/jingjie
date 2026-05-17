@@ -389,4 +389,95 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   applySettings();
+
+  // ==========================================
+  // Immersive Reading Mode (空谷)
+  // ==========================================
+  var immersiveActive = false;
+  var immersiveStartTime = 0;
+  var immersiveTimerInterval = null;
+  var immersiveOverlay = document.getElementById('immersiveOverlay');
+  var immersiveContent = document.getElementById('immersiveContent');
+  var immersiveTopbar = document.getElementById('immersiveTopbar');
+  var immersiveTimerEl = document.getElementById('immersiveTimer');
+
+  function enterImmersive() {
+    if (!currentText) return;
+    var ch = currentText.chapters[currentChapter];
+    var paragraphs = ch.paragraphs && ch.paragraphs.length > 0 ? ch.paragraphs : (ch.content ? ch.content.split('\n\n').filter(function(p) { return p.trim(); }).map(function(p) { return { text: p.trim(), insight: '' }; }) : []);
+
+    // Build immersive HTML with breathing pauses between paragraphs
+    var bodyHtml = paragraphs.map(function(p, i) {
+      var pauseHtml = i > 0 ? '<div class="breath-pause"></div>' : '';
+      return pauseHtml + '<p>' + p.text.replace(/\n/g, '<br>') + '</p>';
+    }).join('');
+
+    immersiveContent.innerHTML = '<div class="im-chapter">' + currentText.title + ' · ' + ch.title + '</div>' +
+      '<div class="im-body">' + bodyHtml + '</div>';
+
+    immersiveOverlay.classList.add('active');
+    immersiveOverlay.setAttribute('aria-hidden', 'false');
+    immersiveActive = true;
+    immersiveStartTime = Date.now();
+    document.body.style.overflow = 'hidden';
+
+    // Start reading timer
+    updateImmersiveTimer();
+    immersiveTimerInterval = setInterval(updateImmersiveTimer, 1000);
+
+    // Show topbar briefly then hide
+    immersiveTopbar.classList.add('visible');
+    clearTimeout(window._immersiveTopbarTimeout);
+    window._immersiveTopbarTimeout = setTimeout(function() {
+      immersiveTopbar.classList.remove('visible');
+    }, 3000);
+
+    // Focus trap
+    document.getElementById('btnImmersiveClose').focus();
+  }
+
+  function exitImmersive() {
+    immersiveOverlay.classList.remove('active');
+    immersiveOverlay.setAttribute('aria-hidden', 'true');
+    immersiveActive = false;
+    document.body.style.overflow = '';
+    if (immersiveTimerInterval) { clearInterval(immersiveTimerInterval); immersiveTimerInterval = null; }
+    document.getElementById('btnImmersive').focus();
+  }
+
+  function updateImmersiveTimer() {
+    var elapsed = Math.floor((Date.now() - immersiveStartTime) / 1000);
+    var m = Math.floor(elapsed / 60);
+    var s = elapsed % 60;
+    immersiveTimerEl.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  }
+
+  document.getElementById('btnImmersive').addEventListener('click', enterImmersive);
+  document.getElementById('btnImmersiveClose').addEventListener('click', exitImmersive);
+
+  // Escape to exit immersive (overrides chapter escape)
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && immersiveActive) {
+      e.preventDefault();
+      exitImmersive();
+    }
+  });
+
+  // Show/hide topbar on mouse move
+  immersiveOverlay.addEventListener('mousemove', function() {
+    if (!immersiveActive) return;
+    immersiveTopbar.classList.add('visible');
+    clearTimeout(window._immersiveTopbarTimeout);
+    window._immersiveTopbarTimeout = setTimeout(function() {
+      immersiveTopbar.classList.remove('visible');
+    }, 3000);
+  });
+
+  // Touch: tap to toggle topbar
+  immersiveOverlay.addEventListener('click', function(e) {
+    if (!immersiveActive) return;
+    if (e.target.closest('.immersive-topbar')) return;
+    immersiveTopbar.classList.toggle('visible');
+  });
+
 });
