@@ -182,6 +182,30 @@
     </div>
   </section>
 
+  <!-- GitHub Issues 心语 -->
+  <section style="padding-top:var(--space-md);">
+    <div class="container" style="max-width:800px;">
+      <div class="glass" style="padding:var(--space-lg);text-align:center;border-radius:var(--radius-lg);margin-bottom:var(--space-md);">
+        <div style="font-size:2rem;margin-bottom:.5rem;">💌</div>
+        <h3 style="font-family:'Noto Serif SC',serif;">分享你的修行感受</h3>
+        <p style="color:var(--text-secondary);margin:.5rem 0 var(--space-sm);font-size:.9rem;">
+          每个人的修行之路都是独一无二的。你的体悟，也许就是另一个人的灯塔。
+        </p>
+        <a href="https://github.com/1332505739/jingjie/issues/new?title=心语:&body=写下你的修行感受...%0A%0A---%0A> 提交后会在「心的回响」板块展示。请勿包含个人隐私信息。" target="_blank" class="btn btn-primary" style="border-radius:100px;">
+          ✦ 提交你的心语
+        </a>
+      </div>
+
+      <!-- Community voices from GitHub Issues -->
+      <div id="githubVoices" style="display:none;">
+        <h3 style="font-family:'Noto Serif SC',serif;text-align:center;margin-bottom:var(--space-md);color:var(--text-tertiary);">
+          🌐 来自社区的回响
+        </h3>
+        <div id="githubVoicesList" class="experience-grid"></div>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
     <div class="container">
       <div class="footer-inner">
@@ -202,5 +226,30 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // GitHub Issues: fetch 心语 from community
+    (async function() {
+      try {
+        var resp = await fetch('https://api.github.com/repos/1332505739/jingjie/issues?state=open&labels=%E5%BF%83%E8%AF%AD&per_page=6&sort=created');
+        if (!resp.ok) return;
+        var issues = await resp.json();
+        if (!Array.isArray(issues) || issues.length === 0) return;
+        document.getElementById('githubVoices').style.display = '';
+        var list = document.getElementById('githubVoicesList');
+        list.innerHTML = issues.map(function(issue) {
+          var body = (issue.body || '').replace(/---[\s\S]*$/, '').trim().slice(0, 200);
+          if (body.length >= 200) body += '…';
+          var date = new Date(issue.created_at);
+          var dateStr = date.getFullYear() + '年' + (date.getMonth()+1) + '月';
+          return '<div class="glass experience-card fade-in visible">' +
+            '<div class="exp-header"><div class="exp-avatar">💬</div>' +
+            '<div><div class="exp-author">' + (issue.user ? issue.user.login : '匿名') + '</div>' +
+            '<div class="exp-time">' + dateStr + '</div></div></div>' +
+            '<div class="exp-content">' + body + '</div>' +
+            '</div>';
+        }).join('');
+      } catch(e) { /* silently fail for offline/GitHub API rate limit */ }
+    })();
+  </script>
 </body>
 </html>

@@ -428,4 +428,14 @@
   renderAll();
   el.progress.style.strokeDashoffset = '0';
 
+  // Sound buttons
+  document.querySelectorAll('.sound-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var sound = btn.dataset.sound;
+      var on = (window.ambientSound && window.ambientSound.toggle) ? window.ambientSound.toggle(sound, 0.4) : false;
+      btn.style.borderColor = on ? 'var(--gold)' : '';
+      btn.style.color = on ? 'var(--gold)' : '';
+    });
+  });
+
 })();

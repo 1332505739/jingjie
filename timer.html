@@ -142,6 +142,13 @@
         <button class="btn-timer" id="btnSkip" title="跳过（提前结束）" aria-label="提前结束" style="display:none;">⏭</button>
       </div>
 
+      <!-- Ambient sound controls -->
+      <div class="sound-controls" style="display:flex;gap:.5rem;justify-content:center;margin-top:1rem;">
+        <button class="btn-timer sound-btn" data-sound="rain" title="雨声" aria-label="切换雨声">🌧</button>
+        <button class="btn-timer sound-btn" data-sound="stream" title="溪流" aria-label="切换溪流声">💧</button>
+        <button class="btn-timer sound-btn" data-sound="bell" title="钟声" aria-label="切换钟声">🔔</button>
+      </div>
+
       <!-- Post-session summary -->
       <div class="session-summary" id="sessionSummary">
         <div class="summary-title">✦ 本次修行完成</div>
@@ -186,6 +193,7 @@
   </footer>
 
   <script src="js/timer.js"></script>
+  <script src="js/sounds.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
