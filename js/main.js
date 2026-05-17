@@ -3,16 +3,41 @@
    Main JavaScript
    ============================================ */
 
+// ==========================================
+// 0. Nav & Footer — centralized
+// ==========================================
+(function(){
+  var NAV=[
+    {href:'index.html',label:'首页'},{href:'yuedu.html',label:'阅读室'},
+    {href:'riqian.html',label:'日签'},{href:'videos.html',label:'影音'},
+    {href:'rumen.html',label:'入门'},{href:'experience.html',label:'心语'},
+    {href:'about.html',label:'关于'}
+  ];
+  var FOOTER=[
+    {href:'yuedu.html',label:'阅读室'},{href:'riqian.html',label:'日签'},
+    {href:'rumen.html',label:'入门'},{href:'experience.html',label:'心语'},
+    {href:'about.html',label:'关于'},
+    {href:'https://github.com/1332505739/jingjie',label:'GitHub',ext:!0}
+  ];
+  var p=(window.location.pathname.split('/').pop()||'index.html');
+  var nl=document.getElementById('navLinks');
+  if(nl) nl.innerHTML=NAV.map(function(l){return '<li><a href="'+l.href+'"'+(p===l.href?' class="active"':'')+'>'+l.label+'</a></li>';}).join('');
+  document.querySelectorAll('.footer-links').forEach(function(el){
+    el.innerHTML=FOOTER.map(function(l){return '<a href="'+l.href+'"'+(l.ext?' target="_blank"':'')+'>'+l.label+'</a>';}).join('');
+  });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
 
   // ==========================================
-  // 0. Theme toggle
+  // 1. Theme toggle
   // ==========================================
   const themeToggle = document.getElementById('themeToggle');
   const html = document.documentElement;
 
-  // Load saved theme
-  const saved = localStorage.getItem('jingjie-theme');
+  // Load saved theme (with privacy-mode safety)
+  var saved;
+  try { saved = localStorage.getItem('jingjie-theme'); } catch(e) { saved = null; }
   if (saved === 'light') {
     html.setAttribute('data-theme', 'light');
     if (themeToggle) themeToggle.textContent = '☽';
@@ -26,11 +51,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (next === 'light') {
         html.setAttribute('data-theme', 'light');
         themeToggle.textContent = '☽';
-        localStorage.setItem('jingjie-theme', 'light');
+        try { localStorage.setItem('jingjie-theme', 'light'); } catch(e) {}
       } else {
         html.removeAttribute('data-theme');
         themeToggle.textContent = '☀';
-        localStorage.setItem('jingjie-theme', 'dark');
+        try { localStorage.setItem('jingjie-theme', 'dark'); } catch(e) {}
       }
     });
   }

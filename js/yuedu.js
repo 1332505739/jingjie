@@ -34,9 +34,29 @@ document.addEventListener('DOMContentLoaded', () => {
   function renderTextList(tradition) {
     currentTradition = tradition;
     const data = library[tradition];
-    if (!data || !textList) return;
+    if (!textList) return;
 
-    const totalChapters = data.texts.reduce((sum, t) => sum + t.chapters.length, 0);
+    // Empty state: no data for this tradition
+    if (!data || !data.texts || data.texts.length === 0) {
+      textList.innerHTML = `<div class="glass empty-state" style="padding:3rem var(--space-md);text-align:center;border-radius:var(--radius-lg);">
+        <div class="empty-icon">📚</div>
+        <h3>经典数据加载中…</h3>
+        <p style="color:var(--text-secondary);margin-top:0.5rem;">该板块内容正在扩充中，请稍后刷新页面。</p>
+      </div>`;
+      return;
+    }
+
+    const totalChapters = data.texts.reduce((sum, t) => sum + (t.chapters ? t.chapters.length : 0), 0);
+
+    // Empty state: no chapters at all
+    if (totalChapters === 0) {
+      textList.innerHTML = `<div class="glass empty-state" style="padding:3rem var(--space-md);text-align:center;border-radius:var(--radius-lg);">
+        <div class="empty-icon">📖</div>
+        <h3>暂无可读篇章</h3>
+        <p style="color:var(--text-secondary);margin-top:0.5rem;">章节数据正在整理中，敬请期待。</p>
+      </div>`;
+      return;
+    }
 
     textList.innerHTML = data.texts.map((text, i) => `
       <div class="glass text-card fade-in visible" style="cursor:pointer; transition-delay:${i * 0.08}s;" data-text-id="${text.id}">
@@ -45,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="text-card-badge">${text.chapters.length} 篇</span>
         </div>
         <p class="text-card-author">${text.author}</p>
-        <p class="text-card-desc">${text.desc} · 共${totalChapters}篇</p>
+        <p class="text-card-desc">${text.desc} · 共${text.chapters.length}篇</p>
       </div>
     `).join('');
 
